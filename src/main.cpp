@@ -30,13 +30,17 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
     auto vBox = container->setLayout(std::make_unique<WVBoxLayout>());
     vBox->setContentsMargins(0, 0, 0, 0);
 
-    auto toolbar = vBox->addWidget(std::make_unique<Toolbar>());
-
     auto subcontainer = vBox->addWidget(std::make_unique<WContainerWidget>());
 
     auto hBox = subcontainer->setLayout(std::make_unique<WVBoxLayout>());
 
+    /// Toolbar setup
+    auto toolbar = vBox->addWidget(std::make_unique<Toolbar>());
+
+    /// Sidebar setup
     auto sidebar = hBox->addWidget(std::make_unique<Sidebar>());
+
+    /// Content setup
     auto content = hBox->addWidget(std::make_unique<Content>());
 }
 
