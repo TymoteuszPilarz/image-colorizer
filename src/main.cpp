@@ -5,25 +5,11 @@
 #include <Wt/WLinkedCssStyleSheet.h>
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WPushButton.h>
-#include <Wt/WColorPicker.h>
 #include <memory>
 
 #include "Toolbar.h"
 #include "Sidebar.h"
 #include "Content.h"
-
-namespace {
-
-    std::unique_ptr<Wt::WPushButton> createColorButton(const char *className,
-                                                       const Wt::WString& text)
-    {
-        auto button = std::make_unique<Wt::WPushButton>();
-        button->setTextFormat(Wt::TextFormat::XHTML);
-        button->setText(text);
-        button->addStyleClass(className);
-        return button;
-    }
-}
 
 class HelloApplication : public Wt::WApplication
 {
