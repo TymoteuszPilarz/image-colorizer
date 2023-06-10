@@ -1,3 +1,5 @@
+#include <memory>
+
 #include <Wt/WApplication.h>
 #include <Wt/WContainerWidget.h>
 #include <Wt/WToolBar.h>
@@ -5,7 +7,6 @@
 #include <Wt/WLinkedCssStyleSheet.h>
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WPushButton.h>
-#include <memory>
 
 #include "Toolbar.h"
 #include "Sidebar.h"
