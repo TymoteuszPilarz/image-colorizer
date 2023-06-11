@@ -7,6 +7,7 @@
 #include <Wt/WLinkedCssStyleSheet.h>
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WPushButton.h>
+#include <Wt/WText.h>
 
 #include "Toolbar.h"
 #include "Sidebar.h"
@@ -21,14 +22,16 @@ public:
 HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplication(env)
 {
     using namespace Wt;
-
-    useStyleSheet(Wt::WLink("css/styles.css"));
+    useStyleSheet("styles.css"); //tak to zadziala, twoj sposób Tymek nie działał u mnie.
 
     auto container = root()->addWidget(std::make_unique<WContainerWidget>());
+
     container->setStyleClass("blue-box");
 
     auto vBox = container->setLayout(std::make_unique<WVBoxLayout>());
     vBox->setContentsMargins(0, 0, 0, 0);
+
+
 
     auto toolbar = vBox->addWidget(std::make_unique<Toolbar>());
 
@@ -38,6 +41,8 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
     auto sidebar = hBox->addWidget(std::make_unique<Sidebar>());
     auto content = hBox->addWidget(std::make_unique<Content>());
 }
+
+
 
 int main(int argc, char **argv)
 {

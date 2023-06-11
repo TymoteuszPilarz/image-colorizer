@@ -1,0 +1,3 @@
+/home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles/ImageColorization.dir
+/home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles/edit_cache.dir
+/home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles/rebuild_cache.dir
