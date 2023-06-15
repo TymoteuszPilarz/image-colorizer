@@ -18,3 +18,10 @@
     text-align: center;
     padding: 3px;
 }
+
+.Wt-filedropzone {
+    background-color: #d3d3d3;
+    border: thick dashed grey;
+    height: 200px;
+    width: 200px;
+}

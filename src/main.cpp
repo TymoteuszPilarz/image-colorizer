@@ -7,7 +7,7 @@
 #include <Wt/WLinkedCssStyleSheet.h>
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WPushButton.h>
-#include <Wt/WText.h>
+#include <Wt/WFileUpload.h>
 
 #include "Toolbar.h"
 #include "Sidebar.h"
@@ -22,10 +22,9 @@ public:
 HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplication(env)
 {
     using namespace Wt;
-    useStyleSheet("styles.css"); //tak to zadziala, twoj sposób Tymek nie działał u mnie.
+    useStyleSheet("style.css");
 
     auto container = root()->addWidget(std::make_unique<WContainerWidget>());
-
     container->setStyleClass("blue-box");
 
     auto vBox = container->setLayout(std::make_unique<WVBoxLayout>());
@@ -33,16 +32,23 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
 
 
 
+
+
+
+
+    auto subcontainer = vBox->addWidget(std::make_unique<WContainerWidget>());
+
+    auto hBox = subcontainer->setLayout(std::make_unique<WVBoxLayout>());
+
+    /// Toolbar setup
     auto toolbar = vBox->addWidget(std::make_unique<Toolbar>());
 
-    auto container2 = vBox->addWidget(std::make_unique<WContainerWidget>());
-    auto hBox = container2->setLayout(std::make_unique<WVBoxLayout>());
-
+    /// Sidebar setup
     auto sidebar = hBox->addWidget(std::make_unique<Sidebar>());
+
+    /// Content setup
     auto content = hBox->addWidget(std::make_unique<Content>());
 }
-
-
 
 int main(int argc, char **argv)
 {
