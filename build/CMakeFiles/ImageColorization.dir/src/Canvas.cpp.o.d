@@ -1,9 +1,9 @@
-CMakeFiles/ImageColorization.dir/src/Content.cpp.o: \
- /home/dedboi/CLionProjects/ImageColorization/src/Content.cpp \
+CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o: \
+ /home/dedboi/CLionProjects/ImageColorization/src/Canvas.cpp \
  /usr/include/stdc-predef.h \
- /home/dedboi/CLionProjects/ImageColorization/src/Content.h \
- /usr/include/Wt/WContainerWidget.h /usr/include/Wt/WInteractWidget.h \
- /usr/include/Wt/WWebWidget.h /usr/include/c++/13.1.1/set \
+ /home/dedboi/CLionProjects/ImageColorization/src/Canvas.h \
+ /usr/include/Wt/WCssDecorationStyle.h /usr/include/Wt/WBorder.h \
+ /usr/include/Wt/WLength.h /usr/include/c++/13.1.1/string \
  /usr/include/c++/13.1.1/bits/requires_hosted.h \
  /usr/include/c++/13.1.1/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/13.1.1/x86_64-pc-linux-gnu/bits/os_defines.h \
@@ -13,17 +13,23 @@ CMakeFiles/ImageColorization.dir/src/Content.cpp.o: \
  /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
  /usr/include/c++/13.1.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
  /usr/include/c++/13.1.1/pstl/pstl_config.h \
- /usr/include/c++/13.1.1/bits/stl_tree.h \
- /usr/include/c++/13.1.1/bits/stl_algobase.h \
- /usr/include/c++/13.1.1/bits/functexcept.h \
- /usr/include/c++/13.1.1/bits/exception_defines.h \
- /usr/include/c++/13.1.1/bits/cpp_type_traits.h \
- /usr/include/c++/13.1.1/ext/type_traits.h \
- /usr/include/c++/13.1.1/ext/numeric_traits.h \
- /usr/include/c++/13.1.1/bits/stl_pair.h \
- /usr/include/c++/13.1.1/type_traits /usr/include/c++/13.1.1/bits/move.h \
- /usr/include/c++/13.1.1/bits/utility.h /usr/include/c++/13.1.1/compare \
- /usr/include/c++/13.1.1/concepts \
+ /usr/include/c++/13.1.1/bits/stringfwd.h \
+ /usr/include/c++/13.1.1/bits/memoryfwd.h \
+ /usr/include/c++/13.1.1/bits/char_traits.h \
+ /usr/include/c++/13.1.1/bits/postypes.h /usr/include/c++/13.1.1/cwchar \
+ /usr/include/wchar.h /usr/include/bits/libc-header-start.h \
+ /usr/include/bits/floatn.h /usr/include/bits/floatn-common.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/stddef.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/stdarg.h \
+ /usr/include/bits/wchar.h /usr/include/bits/types/wint_t.h \
+ /usr/include/bits/types/mbstate_t.h \
+ /usr/include/bits/types/__mbstate_t.h /usr/include/bits/types/__FILE.h \
+ /usr/include/bits/types/FILE.h /usr/include/bits/types/locale_t.h \
+ /usr/include/bits/types/__locale_t.h /usr/include/c++/13.1.1/type_traits \
+ /usr/include/c++/13.1.1/compare /usr/include/c++/13.1.1/concepts \
+ /usr/include/c++/13.1.1/bits/stl_construct.h /usr/include/c++/13.1.1/new \
+ /usr/include/c++/13.1.1/bits/exception.h \
+ /usr/include/c++/13.1.1/bits/move.h \
  /usr/include/c++/13.1.1/bits/stl_iterator_base_types.h \
  /usr/include/c++/13.1.1/bits/iterator_concepts.h \
  /usr/include/c++/13.1.1/bits/ptr_traits.h \
@@ -31,47 +37,12 @@ CMakeFiles/ImageColorization.dir/src/Content.cpp.o: \
  /usr/include/c++/13.1.1/bits/stl_iterator_base_funcs.h \
  /usr/include/c++/13.1.1/bits/concept_check.h \
  /usr/include/c++/13.1.1/debug/assertions.h \
- /usr/include/c++/13.1.1/bits/stl_iterator.h /usr/include/c++/13.1.1/new \
- /usr/include/c++/13.1.1/bits/exception.h \
- /usr/include/c++/13.1.1/bits/stl_construct.h \
- /usr/include/c++/13.1.1/debug/debug.h \
- /usr/include/c++/13.1.1/bits/predefined_ops.h \
- /usr/include/c++/13.1.1/bit /usr/include/c++/13.1.1/bits/allocator.h \
+ /usr/include/c++/13.1.1/bits/allocator.h \
  /usr/include/c++/13.1.1/x86_64-pc-linux-gnu/bits/c++allocator.h \
  /usr/include/c++/13.1.1/bits/new_allocator.h \
- /usr/include/c++/13.1.1/bits/memoryfwd.h \
- /usr/include/c++/13.1.1/bits/stl_function.h \
- /usr/include/c++/13.1.1/backward/binders.h \
- /usr/include/c++/13.1.1/ext/alloc_traits.h \
- /usr/include/c++/13.1.1/bits/alloc_traits.h \
- /usr/include/c++/13.1.1/ext/aligned_buffer.h \
- /usr/include/c++/13.1.1/bits/node_handle.h \
- /usr/include/c++/13.1.1/bits/stl_set.h \
- /usr/include/c++/13.1.1/initializer_list \
- /usr/include/c++/13.1.1/bits/stl_multiset.h \
- /usr/include/c++/13.1.1/bits/range_access.h \
- /usr/include/c++/13.1.1/bits/erase_if.h \
- /usr/include/c++/13.1.1/bits/memory_resource.h \
- /usr/include/c++/13.1.1/cstddef \
- /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/stddef.h \
- /usr/include/c++/13.1.1/bits/uses_allocator.h \
- /usr/include/c++/13.1.1/bits/uses_allocator_args.h \
- /usr/include/c++/13.1.1/tuple /usr/include/c++/13.1.1/bits/invoke.h \
- /usr/include/c++/13.1.1/bits/ranges_util.h \
- /usr/include/c++/13.1.1/bits/ranges_base.h \
- /usr/include/c++/13.1.1/bits/max_size_type.h \
- /usr/include/c++/13.1.1/numbers /usr/include/c++/13.1.1/bitset \
- /usr/include/c++/13.1.1/string /usr/include/c++/13.1.1/bits/stringfwd.h \
- /usr/include/c++/13.1.1/bits/char_traits.h \
- /usr/include/c++/13.1.1/bits/postypes.h /usr/include/c++/13.1.1/cwchar \
- /usr/include/wchar.h /usr/include/bits/libc-header-start.h \
- /usr/include/bits/floatn.h /usr/include/bits/floatn-common.h \
- /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/stdarg.h \
- /usr/include/bits/wchar.h /usr/include/bits/types/wint_t.h \
- /usr/include/bits/types/mbstate_t.h \
- /usr/include/bits/types/__mbstate_t.h /usr/include/bits/types/__FILE.h \
- /usr/include/bits/types/FILE.h /usr/include/bits/types/locale_t.h \
- /usr/include/bits/types/__locale_t.h \
+ /usr/include/c++/13.1.1/bits/functexcept.h \
+ /usr/include/c++/13.1.1/bits/exception_defines.h \
+ /usr/include/c++/13.1.1/bits/cpp_type_traits.h \
  /usr/include/c++/13.1.1/bits/localefwd.h \
  /usr/include/c++/13.1.1/x86_64-pc-linux-gnu/bits/c++locale.h \
  /usr/include/c++/13.1.1/clocale /usr/include/locale.h \
@@ -82,11 +53,29 @@ CMakeFiles/ImageColorization.dir/src/Content.cpp.o: \
  /usr/include/bits/endianness.h \
  /usr/include/c++/13.1.1/bits/ostream_insert.h \
  /usr/include/c++/13.1.1/bits/cxxabi_forced.h \
- /usr/include/c++/13.1.1/bits/refwrap.h \
+ /usr/include/c++/13.1.1/bits/stl_iterator.h \
+ /usr/include/c++/13.1.1/ext/type_traits.h \
+ /usr/include/c++/13.1.1/bits/stl_function.h \
+ /usr/include/c++/13.1.1/backward/binders.h \
+ /usr/include/c++/13.1.1/ext/numeric_traits.h \
+ /usr/include/c++/13.1.1/bits/stl_algobase.h \
+ /usr/include/c++/13.1.1/bits/stl_pair.h \
+ /usr/include/c++/13.1.1/bits/utility.h \
+ /usr/include/c++/13.1.1/debug/debug.h \
+ /usr/include/c++/13.1.1/bits/predefined_ops.h \
+ /usr/include/c++/13.1.1/bit /usr/include/c++/13.1.1/bits/refwrap.h \
+ /usr/include/c++/13.1.1/bits/invoke.h \
+ /usr/include/c++/13.1.1/bits/range_access.h \
+ /usr/include/c++/13.1.1/initializer_list \
  /usr/include/c++/13.1.1/bits/basic_string.h \
+ /usr/include/c++/13.1.1/ext/alloc_traits.h \
+ /usr/include/c++/13.1.1/bits/alloc_traits.h \
  /usr/include/c++/13.1.1/string_view \
  /usr/include/c++/13.1.1/bits/functional_hash.h \
  /usr/include/c++/13.1.1/bits/hash_bytes.h \
+ /usr/include/c++/13.1.1/bits/ranges_base.h \
+ /usr/include/c++/13.1.1/bits/max_size_type.h \
+ /usr/include/c++/13.1.1/numbers \
  /usr/include/c++/13.1.1/bits/string_view.tcc \
  /usr/include/c++/13.1.1/ext/string_conversions.h \
  /usr/include/c++/13.1.1/cstdlib /usr/include/stdlib.h \
@@ -115,10 +104,16 @@ CMakeFiles/ImageColorization.dir/src/Content.cpp.o: \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/bits/types/error_t.h \
  /usr/include/c++/13.1.1/bits/charconv.h \
- /usr/include/c++/13.1.1/bits/basic_string.tcc /usr/include/Wt/WString.h \
+ /usr/include/c++/13.1.1/bits/basic_string.tcc \
+ /usr/include/c++/13.1.1/bits/memory_resource.h \
+ /usr/include/c++/13.1.1/cstddef \
+ /usr/include/c++/13.1.1/bits/uses_allocator.h \
+ /usr/include/c++/13.1.1/bits/uses_allocator_args.h \
+ /usr/include/c++/13.1.1/tuple /usr/include/c++/13.1.1/bits/ranges_util.h \
  /usr/include/Wt/WDllDefs.h /usr/include/Wt/WConfig.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/stdint-uintn.h \
+ /usr/include/Wt/WColor.h /usr/include/Wt/WString.h \
  /usr/include/Wt/WGlobal.h /usr/include/Wt/WFlags.h \
  /usr/include/c++/13.1.1/cassert /usr/include/assert.h \
  /usr/include/Wt/Core/observing_ptr.hpp \
@@ -167,6 +162,7 @@ CMakeFiles/ImageColorization.dir/src/Content.cpp.o: \
  /usr/include/c++/13.1.1/bits/shared_ptr.h \
  /usr/include/c++/13.1.1/bits/shared_ptr_base.h \
  /usr/include/c++/13.1.1/bits/allocated_ptr.h \
+ /usr/include/c++/13.1.1/ext/aligned_buffer.h \
  /usr/include/c++/13.1.1/ext/concurrence.h \
  /usr/include/c++/13.1.1/bits/shared_ptr_atomic.h \
  /usr/include/c++/13.1.1/bits/atomic_base.h \
@@ -198,7 +194,9 @@ CMakeFiles/ImageColorization.dir/src/Content.cpp.o: \
  /usr/include/c++/13.1.1/bits/hashtable.h \
  /usr/include/c++/13.1.1/bits/hashtable_policy.h \
  /usr/include/c++/13.1.1/bits/enable_special_members.h \
- /usr/include/c++/13.1.1/vector /usr/include/c++/13.1.1/bits/stl_vector.h \
+ /usr/include/c++/13.1.1/bits/node_handle.h \
+ /usr/include/c++/13.1.1/bits/erase_if.h /usr/include/c++/13.1.1/vector \
+ /usr/include/c++/13.1.1/bits/stl_vector.h \
  /usr/include/c++/13.1.1/bits/stl_bvector.h \
  /usr/include/c++/13.1.1/bits/vector.tcc /usr/include/c++/13.1.1/array \
  /usr/include/c++/13.1.1/bits/stl_algo.h \
@@ -215,9 +213,11 @@ CMakeFiles/ImageColorization.dir/src/Content.cpp.o: \
  /usr/include/c++/13.1.1/x86_64-pc-linux-gnu/bits/messages_members.h \
  /usr/include/libintl.h /usr/include/c++/13.1.1/bits/codecvt.h \
  /usr/include/c++/13.1.1/bits/locale_facets_nonio.tcc \
- /usr/include/c++/13.1.1/bits/locale_conv.h /usr/include/Wt/WWidget.h \
+ /usr/include/c++/13.1.1/bits/locale_conv.h /usr/include/Wt/WFont.h \
+ /usr/include/Wt/WLink.h /usr/include/Wt/WWidget.h \
  /usr/include/Wt/WObject.h /usr/include/Wt/Core/observable.hpp \
  /usr/include/Wt/Http/Request.h /usr/include/c++/13.1.1/map \
+ /usr/include/c++/13.1.1/bits/stl_tree.h \
  /usr/include/c++/13.1.1/bits/stl_map.h \
  /usr/include/c++/13.1.1/bits/stl_multimap.h \
  /usr/include/c++/13.1.1/istream /usr/include/c++/13.1.1/bits/istream.tcc \
@@ -226,19 +226,19 @@ CMakeFiles/ImageColorization.dir/src/Content.cpp.o: \
  /usr/include/c++/13.1.1/cstring /usr/include/string.h \
  /usr/include/strings.h /usr/include/c++/13.1.1/iostream \
  /usr/include/c++/13.1.1/atomic /usr/include/Wt/WAnimation.h \
- /usr/include/Wt/WLength.h /usr/include/Wt/WSignal.h \
+ /usr/include/Wt/WSignal.h /usr/include/c++/13.1.1/bitset \
  /usr/include/Wt/Signals/signals.hpp /usr/include/c++/13.1.1/cstdint \
  /usr/include/Wt/WJavaScript.h /usr/include/Wt/WEvent.h \
  /usr/include/Wt/WException.h /usr/include/Wt/WJavaScriptSlot.h \
  /usr/include/Wt/WLogger.h /usr/include/Wt/WLogSink.h \
  /usr/include/c++/13.1.1/list /usr/include/c++/13.1.1/bits/stl_list.h \
- /usr/include/c++/13.1.1/bits/list.tcc \
- /home/dedboi/CLionProjects/ImageColorization/src/Canvas.h \
- /usr/include/Wt/WCssDecorationStyle.h /usr/include/Wt/WBorder.h \
- /usr/include/Wt/WColor.h /usr/include/Wt/WFont.h /usr/include/Wt/WLink.h \
- /usr/include/Wt/WPainter.h /usr/include/Wt/WBrush.h \
- /usr/include/Wt/WGradient.h /usr/include/Wt/WLineF.h \
- /usr/include/Wt/WPointF.h /usr/include/Wt/WJavaScriptExposableObject.h \
+ /usr/include/c++/13.1.1/bits/list.tcc /usr/include/Wt/WContainerWidget.h \
+ /usr/include/Wt/WInteractWidget.h /usr/include/Wt/WWebWidget.h \
+ /usr/include/c++/13.1.1/set /usr/include/c++/13.1.1/bits/stl_set.h \
+ /usr/include/c++/13.1.1/bits/stl_multiset.h /usr/include/Wt/WPainter.h \
+ /usr/include/Wt/WBrush.h /usr/include/Wt/WGradient.h \
+ /usr/include/Wt/WLineF.h /usr/include/Wt/WPointF.h \
+ /usr/include/Wt/WJavaScriptExposableObject.h \
  /usr/include/Wt/WPaintDevice.h /usr/include/Wt/WPainterPath.h \
  /usr/include/Wt/WRectF.h /usr/include/Wt/WTransform.h \
  /usr/include/Wt/WPen.h /usr/include/Wt/WShadow.h \

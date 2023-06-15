@@ -261,6 +261,7 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: \
  /usr/include/Wt/WHBoxLayout.h \
  /home/dedboi/CLionProjects/ImageColorization/src/Sidebar.h \
  /home/dedboi/CLionProjects/ImageColorization/src/Content.h \
+ /home/dedboi/CLionProjects/ImageColorization/src/Canvas.h \
  /usr/include/Wt/WPainter.h /usr/include/Wt/WBrush.h \
  /usr/include/Wt/WGradient.h /usr/include/Wt/WLineF.h \
  /usr/include/Wt/WPointF.h /usr/include/Wt/WJavaScriptExposableObject.h \

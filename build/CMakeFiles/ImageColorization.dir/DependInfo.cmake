@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/dedboi/CLionProjects/ImageColorization/src/Canvas.cpp" "CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o" "gcc" "CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o.d"
   "/home/dedboi/CLionProjects/ImageColorization/src/Content.cpp" "CMakeFiles/ImageColorization.dir/src/Content.cpp.o" "gcc" "CMakeFiles/ImageColorization.dir/src/Content.cpp.o.d"
   "/home/dedboi/CLionProjects/ImageColorization/src/Sidebar.cpp" "CMakeFiles/ImageColorization.dir/src/Sidebar.cpp.o" "gcc" "CMakeFiles/ImageColorization.dir/src/Sidebar.cpp.o.d"
   "/home/dedboi/CLionProjects/ImageColorization/src/Toolbar.cpp" "CMakeFiles/ImageColorization.dir/src/Toolbar.cpp.o" "gcc" "CMakeFiles/ImageColorization.dir/src/Toolbar.cpp.o.d"

@@ -129,6 +129,30 @@ ImageColorization/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/build
 .PHONY : ImageColorization/fast
 
+src/Canvas.o: src/Canvas.cpp.o
+.PHONY : src/Canvas.o
+
+# target to build an object file
+src/Canvas.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o
+.PHONY : src/Canvas.cpp.o
+
+src/Canvas.i: src/Canvas.cpp.i
+.PHONY : src/Canvas.i
+
+# target to preprocess a source file
+src/Canvas.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/Canvas.cpp.i
+.PHONY : src/Canvas.cpp.i
+
+src/Canvas.s: src/Canvas.cpp.s
+.PHONY : src/Canvas.s
+
+# target to generate assembly for a file
+src/Canvas.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/Canvas.cpp.s
+.PHONY : src/Canvas.cpp.s
+
 src/Content.o: src/Content.cpp.o
 .PHONY : src/Content.o
 
@@ -234,6 +258,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ImageColorization"
+	@echo "... src/Canvas.o"
+	@echo "... src/Canvas.i"
+	@echo "... src/Canvas.s"
 	@echo "... src/Content.o"
 	@echo "... src/Content.i"
 	@echo "... src/Content.s"

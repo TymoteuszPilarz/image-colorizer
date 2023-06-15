@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o"
+  "CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o.d"
   "CMakeFiles/ImageColorization.dir/src/Content.cpp.o"
   "CMakeFiles/ImageColorization.dir/src/Content.cpp.o.d"
   "CMakeFiles/ImageColorization.dir/src/Sidebar.cpp.o"

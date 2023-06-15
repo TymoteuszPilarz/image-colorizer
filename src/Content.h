@@ -7,10 +7,12 @@
 #define IMAGECOLORIZATION_CONTENT_H
 
 #include <Wt/WContainerWidget.h>
+#include "Canvas.h"
 
 class Content : public Wt::WContainerWidget
 {
-
+public:
+    Content();
 };
 
 
