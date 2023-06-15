@@ -81,12 +81,12 @@ clean: CMakeFiles/ImageColorization.dir/clean
 CMakeFiles/ImageColorization.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target ImageColorization"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target ImageColorization"
 .PHONY : CMakeFiles/ImageColorization.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ImageColorization.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ImageColorization.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles 0
 .PHONY : CMakeFiles/ImageColorization.dir/rule

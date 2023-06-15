@@ -320,7 +320,36 @@ CMakeFiles/ImageColorization.dir/src/Content.cpp.o: /home/dedboi/CLionProjects/I
   /usr/include/Wt/WLogSink.h \
   /usr/include/c++/13.1.1/list \
   /usr/include/c++/13.1.1/bits/stl_list.h \
-  /usr/include/c++/13.1.1/bits/list.tcc
+  /usr/include/c++/13.1.1/bits/list.tcc \
+  /usr/include/Wt/WCssDecorationStyle.h \
+  /usr/include/Wt/WBorder.h \
+  /usr/include/Wt/WColor.h \
+  /usr/include/Wt/WFont.h \
+  /usr/include/Wt/WLink.h \
+  /usr/include/Wt/WPainter.h \
+  /usr/include/Wt/WBrush.h \
+  /usr/include/Wt/WGradient.h \
+  /usr/include/Wt/WLineF.h \
+  /usr/include/Wt/WPointF.h \
+  /usr/include/Wt/WJavaScriptExposableObject.h \
+  /usr/include/Wt/WPaintDevice.h \
+  /usr/include/Wt/WPainterPath.h \
+  /usr/include/Wt/WRectF.h \
+  /usr/include/Wt/WTransform.h \
+  /usr/include/Wt/WPen.h \
+  /usr/include/Wt/WShadow.h \
+  /usr/include/Wt/WPaintedWidget.h \
+  /usr/include/Wt/WJavaScriptHandle.h \
+  /usr/include/Wt/WJavaScriptObjectStorage.h \
+  /usr/include/Wt/WPushButton.h \
+  /usr/include/Wt/WAnchor.h \
+  /usr/include/Wt/WImage.h \
+  /usr/include/Wt/WFormWidget.h \
+  /usr/include/Wt/WValidator.h \
+  /usr/include/Wt/WText.h \
+  /usr/include/Wt/WTemplate.h \
+  /usr/include/Wt/WToolBar.h \
+  /usr/include/Wt/WCompositeWidget.h
 
 CMakeFiles/ImageColorization.dir/src/Sidebar.cpp.o: /home/dedboi/CLionProjects/ImageColorization/src/Sidebar.cpp \
   /usr/include/stdc-predef.h \
@@ -1338,23 +1367,28 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
   /usr/include/Wt/WFormWidget.h \
   /usr/include/Wt/WValidator.h \
   /usr/include/Wt/WText.h \
+  /usr/include/Wt/WFileUpload.h \
   /home/dedboi/CLionProjects/ImageColorization/src/Toolbar.h \
   /usr/include/Wt/WHBoxLayout.h \
   /home/dedboi/CLionProjects/ImageColorization/src/Sidebar.h \
-  /home/dedboi/CLionProjects/ImageColorization/src/Content.h
+  /home/dedboi/CLionProjects/ImageColorization/src/Content.h \
+  /usr/include/Wt/WPainter.h \
+  /usr/include/Wt/WBrush.h \
+  /usr/include/Wt/WGradient.h \
+  /usr/include/Wt/WLineF.h \
+  /usr/include/Wt/WPointF.h \
+  /usr/include/Wt/WJavaScriptExposableObject.h \
+  /usr/include/Wt/WPaintDevice.h \
+  /usr/include/Wt/WPainterPath.h \
+  /usr/include/Wt/WRectF.h \
+  /usr/include/Wt/WTransform.h \
+  /usr/include/Wt/WPen.h \
+  /usr/include/Wt/WShadow.h \
+  /usr/include/Wt/WPaintedWidget.h \
+  /usr/include/Wt/WJavaScriptHandle.h \
+  /usr/include/Wt/WJavaScriptObjectStorage.h \
+  /usr/include/Wt/WTemplate.h
 
-
-/usr/include/Wt/WText.h:
-
-/usr/include/Wt/WValidator.h:
-
-/usr/include/Wt/WImage.h:
-
-/usr/include/Wt/WAnchor.h:
-
-/usr/include/Wt/WPushButton.h:
-
-/usr/include/Wt/WToolBar.h:
 
 /usr/include/Wt/WLocalizedStrings.h:
 
@@ -1362,15 +1396,7 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
 
 /usr/include/Wt/WJavaScriptPreamble.h:
 
-/usr/include/Wt/WFont.h:
-
-/usr/include/Wt/WColor.h:
-
-/usr/include/Wt/WCssDecorationStyle.h:
-
 /usr/include/c++/13.1.1/variant:
-
-/usr/include/c++/13.1.1/span:
 
 /usr/include/Wt/WMessageResourceBundle.h:
 
@@ -1379,8 +1405,6 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
 /usr/include/c++/13.1.1/charconv:
 
 /usr/include/c++/13.1.1/bits/quoted_string.h:
-
-/usr/include/c++/13.1.1/bits/chrono_io.h:
 
 /usr/include/c++/13.1.1/limits:
 
@@ -1404,6 +1428,48 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
 
 /home/dedboi/CLionProjects/ImageColorization/src/Sidebar.h:
 
+/usr/include/Wt/WToolBar.h:
+
+/usr/include/Wt/WText.h:
+
+/usr/include/Wt/WValidator.h:
+
+/usr/include/Wt/WImage.h:
+
+/usr/include/Wt/WAnchor.h:
+
+/usr/include/Wt/WPushButton.h:
+
+/usr/include/Wt/WJavaScriptObjectStorage.h:
+
+/usr/include/Wt/WPaintedWidget.h:
+
+/usr/include/c++/13.1.1/span:
+
+/usr/include/Wt/WShadow.h:
+
+/usr/include/Wt/WPen.h:
+
+/usr/include/Wt/WPainterPath.h:
+
+/usr/include/c++/13.1.1/bits/chrono_io.h:
+
+/usr/include/Wt/WPaintDevice.h:
+
+/usr/include/Wt/WJavaScriptExposableObject.h:
+
+/usr/include/Wt/WPointF.h:
+
+/usr/include/Wt/WBrush.h:
+
+/usr/include/Wt/WPainter.h:
+
+/usr/include/Wt/WFont.h:
+
+/usr/include/Wt/WColor.h:
+
+/usr/include/Wt/WCssDecorationStyle.h:
+
 /usr/include/c++/13.1.1/bits/list.tcc:
 
 /usr/include/c++/13.1.1/bits/stl_list.h:
@@ -1422,9 +1488,15 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
 
 /usr/include/Wt/Signals/signals.hpp:
 
+/usr/include/Wt/WFileUpload.h:
+
 /usr/include/Wt/WSignal.h:
 
 /usr/include/Wt/WLength.h:
+
+/usr/include/Wt/WTemplate.h:
+
+/usr/include/Wt/WGradient.h:
 
 /usr/include/Wt/WAnimation.h:
 
@@ -1600,6 +1672,8 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
 
 /usr/include/c++/13.1.1/cstddef:
 
+/usr/include/Wt/WLineF.h:
+
 /usr/include/stdc-predef.h:
 
 /usr/include/bits/floatn-common.h:
@@ -1611,6 +1685,8 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
 /usr/include/c++/13.1.1/ext/type_traits.h:
 
 /usr/include/Wt/WLayoutImpl.h:
+
+/usr/include/Wt/WRectF.h:
 
 /usr/include/c++/13.1.1/ext/alloc_traits.h:
 
@@ -1902,6 +1978,8 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
 
 /usr/include/bits/errno.h:
 
+/usr/include/Wt/WTransform.h:
+
 /usr/include/bits/timex.h:
 
 /usr/include/bits/types/error_t.h:
@@ -1929,6 +2007,8 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
 /usr/include/Wt/WBorder.h:
 
 /usr/include/Wt/WFlags.h:
+
+/usr/include/Wt/WJavaScriptHandle.h:
 
 /usr/include/c++/13.1.1/bits/stl_set.h:
 

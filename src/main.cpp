@@ -47,7 +47,9 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
     auto sidebar = hBox->addWidget(std::make_unique<Sidebar>());
 
     /// Content setup
-    auto content = hBox->addWidget(std::make_unique<Content>(800,600)); //static for now
+    auto content = hBox->addWidget(std::make_unique<Content>());
+
+
 }
 
 int main(int argc, char **argv)
