@@ -7,14 +7,27 @@
 #define IMAGECOLORIZATION_CONTENT_H
 
 #include <Wt/WContainerWidget.h>
+#include <Wt/WCssDecorationStyle.h>
+#include <Wt/WColor.h>
+#include <Wt/WEvent.h>
+#include <Wt/WPainter.h>
 #include <Wt/WPaintedWidget.h>
+#include <Wt/WPainterPath.h>
+#include <Wt/WPen.h>
+#include <Wt/WPointF.h>
+#include <Wt/WPushButton.h>
+#include <Wt/WRectF.h>
+#include <Wt/WTemplate.h>
+#include <Wt/WText.h>
+#include <Wt/WToolBar.h>
 
-class Content : public Wt::WPaintedWidget
+
+class Content : Wt::WPaintedWidget
 {
 public:
-    Content(int width, int height) : Wt::WPaintedWidget(){};
+    Content(int width, int height);
 
-    void clear(){ update();}
+    void clear();
 
     void setColor(const Wt::WColor& c);
 
