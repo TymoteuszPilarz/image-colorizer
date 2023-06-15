@@ -29,10 +29,10 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
     auto container = root()->addWidget(std::make_unique<WContainerWidget>());
     container->setStyleClass("blue-box");
     std::unique_ptr<Wt::WText> item = std::make_unique<Wt::WText>("kurwa");
-    item->setStyleClass("green-box");
+    //item->setStyleClass("green-box");
     auto vBox = container->setLayout(std::make_unique<WVBoxLayout>());
     vBox->addWidget(std::move(item));
-    vBox->setContentsMargins(0, 0, 0, 0);
+    //vBox->setContentsMargins(0, 0, 0, 0);
 
 
 

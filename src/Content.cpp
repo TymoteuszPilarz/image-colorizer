@@ -48,7 +48,7 @@ Content::Content()
     toolBar->addSeparator();
     toolBar->addButton(std::move(clearButton));
 
-    result->addWidget(std::move(toolBar));
-    result->addWidget(std::move(canvas));
+   this->addWidget(std::move(toolBar));
+    this->addWidget(std::move(canvas));
 
 }
