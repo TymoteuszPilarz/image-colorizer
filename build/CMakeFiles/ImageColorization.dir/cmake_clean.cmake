@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ImageColorization.dir/src/Toolbar.cpp.o.d"
   "CMakeFiles/ImageColorization.dir/src/main.cpp.o"
   "CMakeFiles/ImageColorization.dir/src/main.cpp.o.d"
+  "CMakeFiles/ImageColorization.dir/src/testy.cpp.o"
+  "CMakeFiles/ImageColorization.dir/src/testy.cpp.o.d"
   "ImageColorization"
   "ImageColorization.pdb"
 )

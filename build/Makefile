@@ -225,6 +225,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/testy.o: src/testy.cpp.o
+.PHONY : src/testy.o
+
+# target to build an object file
+src/testy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/testy.cpp.o
+.PHONY : src/testy.cpp.o
+
+src/testy.i: src/testy.cpp.i
+.PHONY : src/testy.i
+
+# target to preprocess a source file
+src/testy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/testy.cpp.i
+.PHONY : src/testy.cpp.i
+
+src/testy.s: src/testy.cpp.s
+.PHONY : src/testy.s
+
+# target to generate assembly for a file
+src/testy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/testy.cpp.s
+.PHONY : src/testy.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -246,6 +270,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/testy.o"
+	@echo "... src/testy.i"
+	@echo "... src/testy.s"
 .PHONY : help
 
 

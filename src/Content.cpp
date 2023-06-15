@@ -6,7 +6,7 @@
 
 Content::Content(int width, int height) : Wt::WPaintedWidget()
 {
-    Wt::WPaintedWidget::resize(width,height);
+    Wt::WPaintedWidget::resize(width, height);
 
     mouseDragged().connect(this, &Content::mouseDrag);
     mouseWentDown().connect(this, &Content::mouseDown);
@@ -14,6 +14,59 @@ Content::Content(int width, int height) : Wt::WPaintedWidget()
     touchMoved().connect(this, &Content::touchMove);
     touchMoved().preventDefaultAction();
     color_ = Wt::WColor(Wt::StandardColor::Black);
+
+
+
+    const Wt::WColor blue("#0d6efd");                              // btn-primary
+    const Wt::WColor red("#dc3545");                               // btn-danger
+    const Wt::WColor green("#198754");                             // btn-success
+    const Wt::WColor yellow("#ffc107");                            // btn-warning
+    const Wt::WColor black = Wt::WColor(Wt::StandardColor::Black); // btn-inverse
+    const Wt::WColor gray("#6c757d");
+
+    auto result = std::make_unique<Wt::WContainerWidget>();
+
+    auto canvas = std::make_unique<Content>(800,600); // static for now
+    auto canvas_ = canvas.get();
+    canvas->setColor(blue);
+    canvas->decorationStyle().setBorder(Wt::WBorder(Wt::BorderStyle::Solid, Wt::BorderWidth::Medium, black));
+
+    std::vector<Wt::WPushButton *> colorButtons {
+            createColorToggle("btn-blue", blue, canvas.get()),
+            createColorToggle("btn-danger", red, canvas.get()),
+            createColorToggle("btn-success", green, canvas.get()),
+            createColorToggle("btn-warning", yellow, canvas.get()),
+            createColorToggle("btn-black", black, canvas.get()),
+            createColorToggle("btn-secondary", gray, canvas.get())
+    };
+
+    auto toolBar = std::make_unique<Wt::WToolBar>();
+
+    for (unsigned i = 0; i < colorButtons.size(); ++i) {
+        Wt::WPushButton *button = colorButtons[i];
+        button->setChecked(i == 0);
+        toolBar->addButton(std::unique_ptr<Wt::WPushButton>(button));
+
+        // Implement a radio button group
+        for (unsigned j = 0; j < colorButtons.size(); ++j) {
+            if (i != j) {
+                Wt::WPushButton * const other = colorButtons[j];
+                button->checked().connect(other, &Wt::WPushButton::setUnChecked);
+            }
+        }
+    }
+
+    auto clearButton = std::make_unique<Wt::WPushButton>("Clear");
+
+    clearButton->clicked().connect([=] {
+        canvas_->clear();
+    });
+
+    toolBar->addSeparator();
+    toolBar->addButton(std::move(clearButton));
+
+    result->addWidget(std::move(toolBar));
+    result->addWidget(std::move(canvas));
 }
 
 void Content::clear()
@@ -68,3 +121,7 @@ void Content::paintEvent(Wt::WPaintDevice *paintDevice)
 
     path_ = Wt::WPainterPath(path_.currentPosition());
 }
+
+
+
+

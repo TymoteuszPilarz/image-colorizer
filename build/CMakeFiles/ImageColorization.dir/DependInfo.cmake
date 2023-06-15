@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/dedboi/CLionProjects/ImageColorization/src/Sidebar.cpp" "CMakeFiles/ImageColorization.dir/src/Sidebar.cpp.o" "gcc" "CMakeFiles/ImageColorization.dir/src/Sidebar.cpp.o.d"
   "/home/dedboi/CLionProjects/ImageColorization/src/Toolbar.cpp" "CMakeFiles/ImageColorization.dir/src/Toolbar.cpp.o" "gcc" "CMakeFiles/ImageColorization.dir/src/Toolbar.cpp.o.d"
   "/home/dedboi/CLionProjects/ImageColorization/src/main.cpp" "CMakeFiles/ImageColorization.dir/src/main.cpp.o" "gcc" "CMakeFiles/ImageColorization.dir/src/main.cpp.o.d"
+  "/home/dedboi/CLionProjects/ImageColorization/src/testy.cpp" "CMakeFiles/ImageColorization.dir/src/testy.cpp.o" "gcc" "CMakeFiles/ImageColorization.dir/src/testy.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

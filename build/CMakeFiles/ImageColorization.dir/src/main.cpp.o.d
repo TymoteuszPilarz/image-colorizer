@@ -256,7 +256,16 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: \
  /usr/include/Wt/WPushButton.h /usr/include/Wt/WAnchor.h \
  /usr/include/Wt/WImage.h /usr/include/Wt/WFormWidget.h \
  /usr/include/Wt/WValidator.h /usr/include/Wt/WText.h \
+ /usr/include/Wt/WFileUpload.h \
  /home/dedboi/CLionProjects/ImageColorization/src/Toolbar.h \
  /usr/include/Wt/WHBoxLayout.h \
  /home/dedboi/CLionProjects/ImageColorization/src/Sidebar.h \
- /home/dedboi/CLionProjects/ImageColorization/src/Content.h
+ /home/dedboi/CLionProjects/ImageColorization/src/Content.h \
+ /usr/include/Wt/WPainter.h /usr/include/Wt/WBrush.h \
+ /usr/include/Wt/WGradient.h /usr/include/Wt/WLineF.h \
+ /usr/include/Wt/WPointF.h /usr/include/Wt/WJavaScriptExposableObject.h \
+ /usr/include/Wt/WPaintDevice.h /usr/include/Wt/WPainterPath.h \
+ /usr/include/Wt/WRectF.h /usr/include/Wt/WTransform.h \
+ /usr/include/Wt/WPen.h /usr/include/Wt/WShadow.h \
+ /usr/include/Wt/WPaintedWidget.h /usr/include/Wt/WJavaScriptHandle.h \
+ /usr/include/Wt/WJavaScriptObjectStorage.h /usr/include/Wt/WTemplate.h
