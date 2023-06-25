@@ -1,7 +1,7 @@
-CMakeFiles/ImageColorization.dir/src/Content.cpp.o: \
- /home/dedboi/CLionProjects/ImageColorization/src/Content.cpp \
+CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o: \
+ /home/dedboi/CLionProjects/ImageColorization/src/DropBox.cpp \
  /usr/include/stdc-predef.h \
- /home/dedboi/CLionProjects/ImageColorization/src/Content.h \
+ /home/dedboi/CLionProjects/ImageColorization/src/DropBox.h \
  /usr/include/Wt/WContainerWidget.h /usr/include/Wt/WInteractWidget.h \
  /usr/include/Wt/WWebWidget.h /usr/include/c++/13.1.1/set \
  /usr/include/c++/13.1.1/bits/requires_hosted.h \
@@ -232,25 +232,8 @@ CMakeFiles/ImageColorization.dir/src/Content.cpp.o: \
  /usr/include/Wt/WException.h /usr/include/Wt/WJavaScriptSlot.h \
  /usr/include/Wt/WLogger.h /usr/include/Wt/WLogSink.h \
  /usr/include/c++/13.1.1/list /usr/include/c++/13.1.1/bits/stl_list.h \
- /usr/include/c++/13.1.1/bits/list.tcc \
- /home/dedboi/CLionProjects/ImageColorization/src/Canvas.h \
- /usr/include/Wt/WCssDecorationStyle.h /usr/include/Wt/WBorder.h \
- /usr/include/Wt/WColor.h /usr/include/Wt/WFont.h /usr/include/Wt/WLink.h \
- /usr/include/Wt/WPainter.h /usr/include/Wt/WBrush.h \
- /usr/include/Wt/WGradient.h /usr/include/Wt/WLineF.h \
- /usr/include/Wt/WPointF.h /usr/include/Wt/WJavaScriptExposableObject.h \
- /usr/include/Wt/WPaintDevice.h /usr/include/Wt/WPainterPath.h \
- /usr/include/Wt/WRectF.h /usr/include/Wt/WTransform.h \
- /usr/include/Wt/WPen.h /usr/include/Wt/WShadow.h \
- /usr/include/Wt/WPaintedWidget.h /usr/include/Wt/WJavaScriptHandle.h \
- /usr/include/Wt/WJavaScriptObjectStorage.h /usr/include/Wt/WPushButton.h \
- /usr/include/Wt/WAnchor.h /usr/include/Wt/WImage.h \
- /usr/include/Wt/WFormWidget.h /usr/include/Wt/WValidator.h \
- /usr/include/Wt/WText.h /usr/include/Wt/WTemplate.h \
- /usr/include/Wt/WToolBar.h /usr/include/Wt/WCompositeWidget.h \
- /home/dedboi/CLionProjects/ImageColorization/src/DropBox.h \
- /usr/include/Wt/WFileDropWidget.h /usr/include/Wt/WResource.h \
- /usr/include/c++/13.1.1/condition_variable \
+ /usr/include/c++/13.1.1/bits/list.tcc /usr/include/Wt/WFileDropWidget.h \
+ /usr/include/Wt/WResource.h /usr/include/c++/13.1.1/condition_variable \
  /usr/include/c++/13.1.1/bits/chrono.h /usr/include/c++/13.1.1/ratio \
  /usr/include/c++/13.1.1/limits \
  /usr/include/c++/13.1.1/bits/parse_numbers.h \

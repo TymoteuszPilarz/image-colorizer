@@ -28,6 +28,7 @@ public:
     void clear();
     void setColor(const Wt::WColor& c);
 
+
 protected:
     virtual void paintEvent(Wt::WPaintDevice *paintDevice);
 

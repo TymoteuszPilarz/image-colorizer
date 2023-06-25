@@ -177,6 +177,30 @@ src/Content.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/Content.cpp.s
 .PHONY : src/Content.cpp.s
 
+src/DropBox.o: src/DropBox.cpp.o
+.PHONY : src/DropBox.o
+
+# target to build an object file
+src/DropBox.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o
+.PHONY : src/DropBox.cpp.o
+
+src/DropBox.i: src/DropBox.cpp.i
+.PHONY : src/DropBox.i
+
+# target to preprocess a source file
+src/DropBox.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/DropBox.cpp.i
+.PHONY : src/DropBox.cpp.i
+
+src/DropBox.s: src/DropBox.cpp.s
+.PHONY : src/DropBox.s
+
+# target to generate assembly for a file
+src/DropBox.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/DropBox.cpp.s
+.PHONY : src/DropBox.cpp.s
+
 src/Sidebar.o: src/Sidebar.cpp.o
 .PHONY : src/Sidebar.o
 
@@ -264,6 +288,9 @@ help:
 	@echo "... src/Content.o"
 	@echo "... src/Content.i"
 	@echo "... src/Content.s"
+	@echo "... src/DropBox.o"
+	@echo "... src/DropBox.i"
+	@echo "... src/DropBox.s"
 	@echo "... src/Sidebar.o"
 	@echo "... src/Sidebar.i"
 	@echo "... src/Sidebar.s"

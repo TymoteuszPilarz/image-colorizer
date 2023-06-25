@@ -3,8 +3,17 @@
 //
 
 #include "Content.h"
+#include "DropBox.h"
 
 Content::Content()
+{
+    DropBox();
+    createCanvas();
+
+
+}
+
+void Content::createCanvas()
 {
     auto result = std::make_unique<Wt::WContainerWidget>();
 
@@ -48,7 +57,7 @@ Content::Content()
     toolBar->addSeparator();
     toolBar->addButton(std::move(clearButton));
 
-   this->addWidget(std::move(toolBar));
+    this->addWidget(std::move(toolBar));
     this->addWidget(std::move(canvas));
 
 }

@@ -13,6 +13,7 @@ class Content : public Wt::WContainerWidget
 {
 public:
     Content();
+    void createCanvas();
 };
 
 
