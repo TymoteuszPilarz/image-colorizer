@@ -245,4 +245,4 @@ CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o: \
  /usr/include/c++/13.1.1/bits/atomic_timed_wait.h \
  /usr/include/c++/13.1.1/bits/this_thread_sleep.h /usr/include/sys/time.h \
  /usr/include/semaphore.h /usr/include/bits/semaphore.h \
- /usr/include/c++/13.1.1/mutex
+ /usr/include/c++/13.1.1/mutex /usr/include/Wt/WText.h

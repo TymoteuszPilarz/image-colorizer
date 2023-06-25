@@ -7,18 +7,23 @@
 
 #include <Wt/WContainerWidget.h>
 #include <Wt/WFileDropWidget.h>
+#include <Wt/WText.h>
+
+using namespace Wt;
 
 
-class DropBox
+class DropBox : public Wt::WContainerWidget
         {
 public:
             DropBox();
+
 
             unsigned int getHeight();
             unsigned int getWidth();
 
             void setHeight(unsigned int h);
             void setWidth(unsigned int w);
+
 
 
 private:

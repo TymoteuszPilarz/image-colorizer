@@ -3,12 +3,14 @@
 //
 
 #include "Content.h"
-#include "DropBox.h"
+
 
 Content::Content()
 {
+
+
     DropBox();
-    createCanvas();
+    //createCanvas();
 
 
 }
@@ -59,5 +61,6 @@ void Content::createCanvas()
 
     this->addWidget(std::move(toolBar));
     this->addWidget(std::move(canvas));
+
 
 }

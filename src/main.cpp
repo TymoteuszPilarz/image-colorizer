@@ -24,15 +24,20 @@ public:
 HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplication(env)
 {
     using namespace Wt;
-    useStyleSheet("style.css");
-
+    useStyleSheet(Wt::WLink("css/styles.css"));
     auto container = root()->addWidget(std::make_unique<WContainerWidget>());
+
+    std::unique_ptr<Wt::WText> item = std::make_unique<Wt::WText>("Item 1");
+
+    container->setWidth(100);
+    container->setHeight(100);
     container->setStyleClass("blue-box");
-    std::unique_ptr<Wt::WText> item = std::make_unique<Wt::WText>("kurwa");
+
     //item->setStyleClass("green-box");
     auto vBox = container->setLayout(std::make_unique<WVBoxLayout>());
+
+    vBox->setContentsMargins(0, 0, 0, 0);
     vBox->addWidget(std::move(item));
-    //vBox->setContentsMargins(0, 0, 0, 0);
 
 
 
@@ -50,8 +55,12 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
     /// Sidebar setup
     auto sidebar = hBox->addWidget(std::make_unique<Sidebar>());
 
+
+
     /// Content setup
     auto content = hBox->addWidget(std::make_unique<Content>());
+
+
 
 
 }

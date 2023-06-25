@@ -8,6 +8,7 @@
 
 #include <Wt/WContainerWidget.h>
 #include "Canvas.h"
+#include "DropBox.h"
 
 class Content : public Wt::WContainerWidget
 {

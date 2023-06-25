@@ -1058,7 +1058,8 @@ CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o: /home/dedboi/CLionProjects/I
   /usr/include/sys/time.h \
   /usr/include/semaphore.h \
   /usr/include/bits/semaphore.h \
-  /usr/include/c++/13.1.1/mutex
+  /usr/include/c++/13.1.1/mutex \
+  /usr/include/Wt/WText.h
 
 CMakeFiles/ImageColorization.dir/src/Sidebar.cpp.o: /home/dedboi/CLionProjects/ImageColorization/src/Sidebar.cpp \
   /usr/include/stdc-predef.h \
@@ -2097,7 +2098,22 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
   /usr/include/Wt/WPaintedWidget.h \
   /usr/include/Wt/WJavaScriptHandle.h \
   /usr/include/Wt/WJavaScriptObjectStorage.h \
-  /usr/include/Wt/WTemplate.h
+  /usr/include/Wt/WTemplate.h \
+  /home/dedboi/CLionProjects/ImageColorization/src/DropBox.h \
+  /usr/include/Wt/WFileDropWidget.h \
+  /usr/include/Wt/WResource.h \
+  /usr/include/c++/13.1.1/condition_variable \
+  /usr/include/c++/13.1.1/bits/unique_lock.h \
+  /usr/include/c++/13.1.1/stop_token \
+  /usr/include/c++/13.1.1/bits/std_thread.h \
+  /usr/include/c++/13.1.1/semaphore \
+  /usr/include/c++/13.1.1/bits/semaphore_base.h \
+  /usr/include/c++/13.1.1/bits/atomic_timed_wait.h \
+  /usr/include/c++/13.1.1/bits/this_thread_sleep.h \
+  /usr/include/sys/time.h \
+  /usr/include/semaphore.h \
+  /usr/include/bits/semaphore.h \
+  /usr/include/c++/13.1.1/mutex
 
 
 /usr/include/Wt/WLocalizedStrings.h:
