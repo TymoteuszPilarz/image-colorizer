@@ -2,67 +2,53 @@
 // Created by Tymoteusz Pilarz on 10/06/2023.
 //
 
+#include <memory>
+#include <Wt/WVBoxLayout.h>
+#include <Wt/WPushButton.h>
+
 #include "Content.h"
 
+using namespace Wt;
+
+std::tuple<int, int> Content::getScaledSize(int sourceWidth, int sourceHeight, int destinationWidth, int destinationHeight)
+{
+    auto widthRatio = static_cast<double>(destinationWidth) / sourceWidth;
+    auto heightRatio = static_cast<double>(destinationHeight) / sourceHeight;
+
+    auto scaleRatio = (widthRatio < heightRatio) ? widthRatio : heightRatio;
+
+    auto width = static_cast<int>(sourceWidth * scaleRatio);
+    auto height = static_cast<int>(sourceHeight * scaleRatio);
+
+    return {width, height};
+}
+
+void Content::layoutSizeChanged(int width, int height)
+{
+    log("info") << width << "x" << height;
+    auto [imagePainterWidth, imagePainterHeight] = getScaledSize(image->width(), image->height(), width, height);
+    log("info") << imagePainterWidth << "x" << imagePainterHeight;
+
+    imagePainter->resize(imagePainterWidth, imagePainterHeight);
+
+    WWidget::layoutSizeChanged(width, height);
+}
 
 Content::Content()
 {
+    setStyleClass("content");
+    setLayoutSizeAware(true);
+    setContentAlignment(AlignmentFlag::Center);
+    WWebWidget::setMargin(0);
 
+    imagePainter = addWidget(std::make_unique<ImagePainter>());
 
-    //DropBox();
-    createCanvas();
-
-
+    loadImage("res/image.jpg");
 }
 
-void Content::createCanvas()
+void Content::loadImage(const std::string& fileName)
 {
-    auto result = std::make_unique<Wt::WContainerWidget>();
-    Wt::WColor *color = new Wt::WColor(255,255,255,255);
-    auto canvas = std::make_unique<Canvas>(800, 600);
-    auto canvas_ = canvas.get();
-    canvas->setColor(blue);
-    canvas->decorationStyle().setBorder
-            (Wt::WBorder(Wt::BorderStyle::Solid, Wt::BorderWidth::Medium, black));
-    canvas->decorationStyle().setBackgroundColor(*color);
-
-    std::vector<Wt::WPushButton *> colorButtons {
-            createColorToggle("btn-blue", blue, canvas.get()),
-            createColorToggle("btn-danger", red, canvas.get()),
-            createColorToggle("btn-success", green, canvas.get()),
-            createColorToggle("btn-warning", yellow, canvas.get()),
-            createColorToggle("btn-black", black, canvas.get()),
-            createColorToggle("btn-secondary", gray, canvas.get())
-    };
-
-    auto toolBar = std::make_unique<Wt::WToolBar>();
-
-    for (unsigned i = 0; i < colorButtons.size(); ++i) {
-        Wt::WPushButton *button = colorButtons[i];
-        button->setChecked(i == 0);
-        toolBar->addButton(std::unique_ptr<Wt::WPushButton>(button));
-
-        // Implement a radio button group
-        for (unsigned j = 0; j < colorButtons.size(); ++j) {
-            if (i != j) {
-                Wt::WPushButton * const other = colorButtons[j];
-                button->checked().connect(other, &Wt::WPushButton::setUnChecked);
-            }
-        }
-    }
-
-    auto clearButton = std::make_unique<Wt::WPushButton>("Clear");
-
-    clearButton->clicked().connect([=] {
-        canvas_->clear();
-    });
-
-    toolBar->addSeparator();
-    toolBar->setStyleClass("blue-box");
-    toolBar->addButton(std::move(clearButton));
-
-    this->addWidget(std::move(toolBar));
-    this->addWidget(std::move(canvas));
-
-
+    image = std::make_unique<WPainter::Image>(fileName, fileName);
+    imagePainter->setImage(image.get());
+    //imagePainter->resize(592, 329);
 }

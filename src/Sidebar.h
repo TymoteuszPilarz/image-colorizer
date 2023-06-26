@@ -10,7 +10,8 @@
 
 class Sidebar : public Wt::WContainerWidget
 {
-
+public:
+    Sidebar();
 };
 
 

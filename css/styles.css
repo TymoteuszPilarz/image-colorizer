@@ -1,0 +1,25 @@
+.yellow-box {
+    background-color: #e3d000;
+    margin: 0;
+}
+
+.green-box {
+    background-color: #24b600;
+    margin: 0;
+}
+
+.content {
+    background-color: #000000;
+    margin: 0;
+}
+
+.blue-box {
+    background-color: #06dbf8;
+    height: 100vh;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    /*overflow: hidden;*/
+}
