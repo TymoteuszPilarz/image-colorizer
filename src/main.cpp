@@ -24,14 +24,11 @@ public:
 HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplication(env)
 {
     using namespace Wt;
-    useStyleSheet(Wt::WLink("css/styles.css"));
+    useStyleSheet("css/style.css");
     auto container = root()->addWidget(std::make_unique<WContainerWidget>());
 
     std::unique_ptr<Wt::WText> item = std::make_unique<Wt::WText>("Item 1");
-
-    container->setWidth(100);
-    container->setHeight(100);
-    container->setStyleClass("blue-box");
+    container->setStyleClass("body");
 
     //item->setStyleClass("green-box");
     auto vBox = container->setLayout(std::make_unique<WVBoxLayout>());

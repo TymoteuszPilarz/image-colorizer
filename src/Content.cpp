@@ -9,8 +9,8 @@ Content::Content()
 {
 
 
-    DropBox();
-    //createCanvas();
+    //DropBox();
+    createCanvas();
 
 
 }
@@ -18,12 +18,13 @@ Content::Content()
 void Content::createCanvas()
 {
     auto result = std::make_unique<Wt::WContainerWidget>();
-
+    Wt::WColor *color = new Wt::WColor(255,255,255,255);
     auto canvas = std::make_unique<Canvas>(800, 600);
     auto canvas_ = canvas.get();
     canvas->setColor(blue);
     canvas->decorationStyle().setBorder
             (Wt::WBorder(Wt::BorderStyle::Solid, Wt::BorderWidth::Medium, black));
+    canvas->decorationStyle().setBackgroundColor(*color);
 
     std::vector<Wt::WPushButton *> colorButtons {
             createColorToggle("btn-blue", blue, canvas.get()),
@@ -57,6 +58,7 @@ void Content::createCanvas()
     });
 
     toolBar->addSeparator();
+    toolBar->setStyleClass("blue-box");
     toolBar->addButton(std::move(clearButton));
 
     this->addWidget(std::move(toolBar));
