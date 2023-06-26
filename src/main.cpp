@@ -6,6 +6,7 @@
 #include <Wt/WLink.h>
 #include <Wt/WLinkedCssStyleSheet.h>
 #include <Wt/WVBoxLayout.h>
+#include <Wt/WHBoxLayout.h>
 #include <Wt/WPushButton.h>
 
 #include "Toolbar.h"
@@ -29,13 +30,16 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
 
     auto vBox = container->setLayout(std::make_unique<WVBoxLayout>());
     vBox->setContentsMargins(0, 0, 0, 0);
-
-    auto subcontainer = vBox->addWidget(std::make_unique<WContainerWidget>());
-
-    auto hBox = subcontainer->setLayout(std::make_unique<WVBoxLayout>());
+    vBox->setSpacing(0);
 
     /// Toolbar setup
     auto toolbar = vBox->addWidget(std::make_unique<Toolbar>());
+
+    auto subcontainer = vBox->addWidget(std::make_unique<WContainerWidget>());
+
+    auto hBox = subcontainer->setLayout(std::make_unique<WHBoxLayout>());
+    hBox->setContentsMargins(0, 0, 0, 0);
+    hBox->setSpacing(0);
 
     /// Sidebar setup
     auto sidebar = hBox->addWidget(std::make_unique<Sidebar>());
