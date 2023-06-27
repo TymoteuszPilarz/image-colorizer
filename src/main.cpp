@@ -8,6 +8,7 @@
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WHBoxLayout.h>
 #include <Wt/WPushButton.h>
+#include <Wt/WTable.h>
 
 #include "Toolbar.h"
 #include "Sidebar.h"

@@ -25,7 +25,8 @@ protected:
 public:
     Content();
 
-    void loadImage(const std::string& fileName);
+    void setImage(const std::string& fileName);
+
 };
 
 

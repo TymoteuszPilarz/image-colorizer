@@ -25,9 +25,7 @@ std::tuple<int, int> Content::getScaledSize(int sourceWidth, int sourceHeight, i
 
 void Content::layoutSizeChanged(int width, int height)
 {
-    log("info") << width << "x" << height;
     auto [imagePainterWidth, imagePainterHeight] = getScaledSize(image->width(), image->height(), width, height);
-    log("info") << imagePainterWidth << "x" << imagePainterHeight;
 
     imagePainter->resize(imagePainterWidth, imagePainterHeight);
 
@@ -43,12 +41,11 @@ Content::Content()
 
     imagePainter = addWidget(std::make_unique<ImagePainter>());
 
-    loadImage("res/image.jpg");
+    setImage("res/image.jpg");
 }
 
-void Content::loadImage(const std::string& fileName)
+void Content::setImage(const std::string& fileName)
 {
     image = std::make_unique<WPainter::Image>(fileName, fileName);
     imagePainter->setImage(image.get());
-    //imagePainter->resize(592, 329);
 }

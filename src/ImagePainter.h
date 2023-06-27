@@ -21,12 +21,22 @@ class ImagePainter : public Wt::WPaintedWidget
 private:
     struct BufferElement
     {
-        Wt::WPainter painter;
+        Wt::WPen pen;
         Wt::WPainterPath painterPath;
     };
     std::vector<BufferElement> buffer;
 
-    Wt::WPainter::Image* image;
+    Wt::WPainter::Image* image = nullptr;
+
+    Wt::WPainterPath painterPath;
+    Wt::WPainter painter;
+
+    bool repaintRequired = true;
+
+    void configurePainter();
+
+    void mouseDown(const Wt::WMouseEvent& e);
+    void mouseDrag(const Wt::WMouseEvent& e);
 
 protected:
     void paintEvent(Wt::WPaintDevice* paintDevice) override;
@@ -34,7 +44,11 @@ protected:
 public:
     ImagePainter();
 
+    void resize(const Wt::WLength& width, const Wt::WLength& height) override;
+
     void setImage(Wt::WPainter::Image* image);
+    void setColor(const Wt::WColor& color);
+    void clear();
 };
 
 
