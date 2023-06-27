@@ -1,11 +1,17 @@
-.yellow-box {
+.toolbar {
     background-color: #e3d000;
     margin: 0;
+    height : 40px;
+    min-height: 40px;
+    max-height: 40px;
 }
 
-.green-box {
+.sidebar {
     background-color: #24b600;
     margin: 0;
+    width : 300px;
+    min-width: 300px;
+    max-width: 300px;
 }
 
 .content {

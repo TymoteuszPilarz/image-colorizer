@@ -12,7 +12,7 @@ using namespace Wt;
 
 Toolbar::Toolbar()
 {
-    setStyleClass("yellow-box");
+    setStyleClass("toolbar");
 
     Wt::WWebWidget::setMargin(0);
 

@@ -35,6 +35,7 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
     /// Toolbar setup
     auto toolbar = vBox->addWidget(std::make_unique<Toolbar>());
 
+    /// Subcontainer setup
     auto subcontainer = vBox->addWidget(std::make_unique<WContainerWidget>());
 
     auto hBox = subcontainer->setLayout(std::make_unique<WHBoxLayout>());

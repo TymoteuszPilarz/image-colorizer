@@ -12,7 +12,7 @@ using namespace Wt;
 
 Sidebar::Sidebar()
 {
-    setStyleClass("green-box");
+    setStyleClass("sidebar");
 
     Wt::WWebWidget::setMargin(0);
 
