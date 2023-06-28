@@ -27,16 +27,19 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
     useStyleSheet(Wt::WLink("css/styles.css"));
 
     auto container = root()->addWidget(std::make_unique<WContainerWidget>());
-    container->setStyleClass("blue-box");
+    container->setStyleClass("background");
 
     auto vBox = container->setLayout(std::make_unique<WVBoxLayout>());
     vBox->setContentsMargins(0, 0, 0, 0);
     vBox->setSpacing(0);
 
-    /// Toolbar setup
-    auto toolbar = vBox->addWidget(std::make_unique<Toolbar>());
+    /// Content needs to be created earlier, because it is used as a parameter in Toolbar and Sidebar contructors, but appears in vbox after the Toolbar
+    auto contentPtr = std::make_unique<Content>();
 
-    /// Subcontainer setup
+    /// Toolbar setup
+    auto toolbar = vBox->addWidget(std::make_unique<Toolbar>(contentPtr.get()));
+
+    /// Sidebar and content container setup
     auto subcontainer = vBox->addWidget(std::make_unique<WContainerWidget>());
 
     auto hBox = subcontainer->setLayout(std::make_unique<WHBoxLayout>());
@@ -44,10 +47,10 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
     hBox->setSpacing(0);
 
     /// Sidebar setup
-    auto sidebar = hBox->addWidget(std::make_unique<Sidebar>());
+    auto sidebar = hBox->addWidget(std::make_unique<Sidebar>(contentPtr.get()));
 
     /// Content setup
-    auto content = hBox->addWidget(std::make_unique<Content>());
+    auto content = hBox->addWidget(std::move(contentPtr));
 }
 
 int main(int argc, char **argv)

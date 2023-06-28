@@ -26,7 +26,12 @@ public:
     Content();
 
     void setImage(const std::string& fileName);
+    void setPenColor(const Wt::WColor& color);
+    void setPenWidth(int width);
+    void undo();
+    void clearCanvas();
 
+    void saveToPNG();
 };
 
 

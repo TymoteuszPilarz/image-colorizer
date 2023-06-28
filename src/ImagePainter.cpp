@@ -2,6 +2,8 @@
 // Created by Tymoteusz Pilarz on 24/06/2023.
 //
 
+#include <fstream>
+
 #include <Wt/WRectF.h>
 #include <Wt/WCssDecorationStyle.h>
 #include <Wt/WColor.h>
@@ -15,6 +17,7 @@
 #include <Wt/WTemplate.h>
 #include <Wt/WText.h>
 #include <Wt/WToolBar.h>
+#include <Wt/WRasterImage.h>
 
 #include "ImagePainter.h"
 
@@ -22,6 +25,11 @@ using namespace Wt;
 
 void ImagePainter::mouseDown(const Wt::WMouseEvent& e)
 {
+    if (image == nullptr)
+    {
+        return;
+    }
+
     Wt::Coordinates c = e.widget();
     buffer.push_back({pen, WPainterPath(Wt::WPointF(c.x, c.y)), static_cast<int>(WWebWidget::width().toPixels()), static_cast<int>(WWebWidget::height().toPixels())});
     painterPath = WPainterPath(Wt::WPointF(c.x, c.y));
@@ -29,6 +37,11 @@ void ImagePainter::mouseDown(const Wt::WMouseEvent& e)
 
 void ImagePainter::mouseDrag(const Wt::WMouseEvent& e)
 {
+    if (image == nullptr)
+    {
+        return;
+    }
+
     Wt::Coordinates c = e.widget();
     buffer.back().painterPath.lineTo(c.x, c.y);
     painterPath.lineTo(c.x, c.y);
@@ -38,9 +51,13 @@ void ImagePainter::mouseDrag(const Wt::WMouseEvent& e)
 
 void ImagePainter::paintEvent(WPaintDevice* paintDevice)
 {
+    if (image == nullptr)
+    {
+        return;
+    }
+
     WPainter painter(paintDevice);
     painter.setRenderHint(RenderHint::Antialiasing);
-    painter.setPen(pen);
 
     if (repaintRequired)
     {
@@ -59,6 +76,8 @@ void ImagePainter::paintEvent(WPaintDevice* paintDevice)
     }
     else
     {
+        painter.setPen(pen);
+
         painter.drawPath(painterPath);
         painterPath = painterPath.currentPosition();
     }
@@ -104,12 +123,44 @@ void ImagePainter::setPenWidth(int width)
 
 void ImagePainter::undo()
 {
-    buffer.pop_back();
+    if (!buffer.empty())
+    {
+        buffer.pop_back();
+        repaintRequired = true;
+        update();
+    }
+}
+
+void ImagePainter::clearCanvas()
+{
+    buffer.clear();
     repaintRequired = true;
     update();
 }
 
-void ImagePainter::clear()
+void ImagePainter::saveToPNG(const std::string& filename)
 {
-    buffer.clear();
+    if (image == nullptr)
+    {
+        return;
+    }
+
+    WRasterImage pngImage("png", image->width(), image->height());
+
+    WPainter painter(&pngImage);
+    painter.setRenderHint(RenderHint::Antialiasing);
+
+    painter.drawImage(WRectF(0.0, 0.0, image->width(), image->height()), *image);
+
+    for (auto& element : buffer)
+    {
+        painter.save();
+        painter.setPen(element.pen);
+        painter.scale(static_cast<double>(image->width()) / element.currentWidth, static_cast<double>(image->height()) / element.currentHeight);
+        painter.drawPath(element.painterPath);
+        painter.restore();
+    }
+
+    std::ofstream file(filename, std::ios::out | std::ios::binary);
+    pngImage.write(file);
 }

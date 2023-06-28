@@ -10,7 +10,7 @@
 
 using namespace Wt;
 
-Sidebar::Sidebar()
+Sidebar::Sidebar(Content* content) : content(content)
 {
     setStyleClass("sidebar");
 

@@ -10,7 +10,7 @@
 
 using namespace Wt;
 
-Toolbar::Toolbar()
+Toolbar::Toolbar(Content* content) : content(content)
 {
     setStyleClass("toolbar");
 
@@ -18,8 +18,17 @@ Toolbar::Toolbar()
 
     auto hBox = setLayout(std::make_unique<WHBoxLayout>());
 
-    auto fileButton = hBox->addWidget(std::make_unique<WPushButton>());
-    auto button1 = hBox->addWidget(std::make_unique<WPushButton>());
-    auto button2 = hBox->addWidget(std::make_unique<WPushButton>());
+    auto undo = hBox->addWidget(std::make_unique<WPushButton>());
+    undo->setText("Undo");
+    undo->clicked().connect(content, &Content::undo);
+
+    auto clear = hBox->addWidget(std::make_unique<WPushButton>());
+    clear->setText("Clear");
+    clear->clicked().connect(content, &Content::clearCanvas);
+
+    auto save = hBox->addWidget(std::make_unique<WPushButton>());
+    save->setText("Save");
+    save->clicked().connect(content, &Content::saveToPNG);
+
     auto button3 = hBox->addWidget(std::make_unique<WPushButton>());
 }

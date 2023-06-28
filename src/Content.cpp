@@ -40,13 +40,40 @@ Content::Content()
     WWebWidget::setMargin(0);
 
     imagePainter = addWidget(std::make_unique<ImagePainter>());
-    imagePainter->setPenColor(StandardColor::Red);
 
     setImage("res/image.jpg");
+    imagePainter->setPenColor(StandardColor::Red);
+    imagePainter->setImage(image.get());
 }
 
 void Content::setImage(const std::string& fileName)
 {
     image = std::make_unique<WPainter::Image>(fileName, fileName);
     imagePainter->setImage(image.get());
+}
+
+void Content::setPenColor(const Wt::WColor& color)
+{
+    imagePainter->setPenColor(color);
+}
+
+void Content::setPenWidth(int width)
+{
+    imagePainter->setPenWidth(width);
+}
+
+void Content::undo()
+{
+    imagePainter->undo();
+}
+
+void Content::clearCanvas()
+{
+    imagePainter->clearCanvas();
+}
+
+void Content::saveToPNG()
+{
+    std::string filename = "out/out.png";
+    imagePainter->saveToPNG(filename);
 }

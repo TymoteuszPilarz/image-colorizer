@@ -8,10 +8,15 @@
 #include <Wt/WContainerWidget.h>
 #include <Wt/WVBoxLayout.h>
 
+#include "Content.h"
+
 class Sidebar : public Wt::WContainerWidget
 {
+private:
+    Content* content;
+
 public:
-    Sidebar();
+    Sidebar(Content* content);
 };
 
 

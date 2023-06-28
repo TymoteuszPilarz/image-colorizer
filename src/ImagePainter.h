@@ -45,11 +45,14 @@ public:
     ImagePainter();
 
     void resize(const Wt::WLength& width, const Wt::WLength& height) override;
+
     void setImage(Wt::WPainter::Image* image);
     void setPenColor(const Wt::WColor& color);
     void setPenWidth(int width);
     void undo();
-    void clear();
+    void clearCanvas();
+
+    void saveToPNG(const std::string& filename);
 };
 
 

@@ -7,10 +7,15 @@
 
 #include <Wt/WContainerWidget.h>
 
+#include "Content.h"
+
 class Toolbar : public Wt::WContainerWidget
 {
+private:
+    Content* content;
+
 public:
-    Toolbar();
+    Toolbar(Content* content);
 };
 
 #endif //IMAGECOLORIZATION_TOOLBAR_H
