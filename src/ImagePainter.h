@@ -23,17 +23,17 @@ private:
     {
         Wt::WPen pen;
         Wt::WPainterPath painterPath;
+        int currentWidth;
+        int currentHeight;
     };
     std::vector<BufferElement> buffer;
 
     Wt::WPainter::Image* image = nullptr;
 
     Wt::WPainterPath painterPath;
-    Wt::WPainter painter;
+    Wt::WPen pen;
 
     bool repaintRequired = true;
-
-    void configurePainter();
 
     void mouseDown(const Wt::WMouseEvent& e);
     void mouseDrag(const Wt::WMouseEvent& e);
@@ -45,9 +45,10 @@ public:
     ImagePainter();
 
     void resize(const Wt::WLength& width, const Wt::WLength& height) override;
-
     void setImage(Wt::WPainter::Image* image);
-    void setColor(const Wt::WColor& color);
+    void setPenColor(const Wt::WColor& color);
+    void setPenWidth(int width);
+    void undo();
     void clear();
 };
 

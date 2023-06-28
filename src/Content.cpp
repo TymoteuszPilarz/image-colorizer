@@ -40,6 +40,7 @@ Content::Content()
     WWebWidget::setMargin(0);
 
     imagePainter = addWidget(std::make_unique<ImagePainter>());
+    imagePainter->setPenColor(StandardColor::Red);
 
     setImage("res/image.jpg");
 }

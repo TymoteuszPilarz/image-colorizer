@@ -20,22 +20,10 @@
 
 using namespace Wt;
 
-void ImagePainter::configurePainter()
-{
-    Wt::WPen pen;
-    pen.setWidth(3);
-    pen.setCapStyle(Wt::PenCapStyle::Flat);
-    pen.setJoinStyle(Wt::PenJoinStyle::Miter);
-    pen.setColor(StandardColor::Red);
-    painter.setRenderHint(Wt::RenderHint::Antialiasing);
-    painter.setPen(pen);
-}
-
 void ImagePainter::mouseDown(const Wt::WMouseEvent& e)
 {
     Wt::Coordinates c = e.widget();
-    buffer.push_back({painter.pen(), WPainterPath(Wt::WPointF(c.x, c.y))});
-
+    buffer.push_back({pen, WPainterPath(Wt::WPointF(c.x, c.y)), static_cast<int>(WWebWidget::width().toPixels()), static_cast<int>(WWebWidget::height().toPixels())});
     painterPath = WPainterPath(Wt::WPointF(c.x, c.y));
 }
 
@@ -43,7 +31,6 @@ void ImagePainter::mouseDrag(const Wt::WMouseEvent& e)
 {
     Wt::Coordinates c = e.widget();
     buffer.back().painterPath.lineTo(c.x, c.y);
-
     painterPath.lineTo(c.x, c.y);
 
     update(PaintFlag::Update);
@@ -51,23 +38,22 @@ void ImagePainter::mouseDrag(const Wt::WMouseEvent& e)
 
 void ImagePainter::paintEvent(WPaintDevice* paintDevice)
 {
-    log("info") << "paint";
-    painter.begin(paintDevice);
-    configurePainter();
+    WPainter painter(paintDevice);
+    painter.setRenderHint(RenderHint::Antialiasing);
+    painter.setPen(pen);
 
     if (repaintRequired)
     {
         painter.drawImage(WRectF(0.0, 0.0, WWebWidget::width().toPixels(), WWebWidget::height().toPixels()), *image);
 
-        WPen pen = painter.pen();
-
         for (auto& element : buffer)
         {
+            painter.save();
             painter.setPen(element.pen);
+            painter.scale(WWebWidget::width().toPixels() / element.currentWidth, WWebWidget::height().toPixels() / element.currentHeight);
             painter.drawPath(element.painterPath);
+            painter.restore();
         }
-
-        painter.setPen(pen);
 
         repaintRequired = false;
     }
@@ -84,13 +70,17 @@ ImagePainter::ImagePainter()
 {
     mouseDragged().connect(this, &ImagePainter::mouseDrag);
     mouseWentDown().connect(this, &ImagePainter::mouseDown);
+
+    pen.setWidth(3);
+    pen.setColor(StandardColor::Black);
+    pen.setCapStyle(Wt::PenCapStyle::Round);
+    pen.setJoinStyle(Wt::PenJoinStyle::Miter);
 }
 
 void ImagePainter::resize(const Wt::WLength& width, const Wt::WLength& height)
 {
     if (width != WWebWidget::width() || height != WWebWidget::height())
     {
-        log("info") << "resize";
         repaintRequired = true;
         WPaintedWidget::resize(width, height);
     }
@@ -102,11 +92,21 @@ void ImagePainter::setImage(Wt::WPainter::Image* image)
     this->image = image;
 }
 
-void ImagePainter::setColor(const Wt::WColor& color)
+void ImagePainter::setPenColor(const Wt::WColor& color)
 {
-    WPen pen = painter.pen();
     pen.setColor(color);
-    painter.setPen(pen);
+}
+
+void ImagePainter::setPenWidth(int width)
+{
+    pen.setWidth(width);
+}
+
+void ImagePainter::undo()
+{
+    buffer.pop_back();
+    repaintRequired = true;
+    update();
 }
 
 void ImagePainter::clear()
