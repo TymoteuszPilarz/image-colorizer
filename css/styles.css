@@ -31,8 +31,10 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 25px;
-    font-family: "Times New Roman", Times, Serif;
+    font-size: 20px;
+    border-bottom: solid black;
+    border-top: solid black;
+
     transition-duration: 0.4s;
 }
 
