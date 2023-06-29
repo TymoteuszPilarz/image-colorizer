@@ -12,7 +12,7 @@ using namespace Wt;
 
 Sidebar::Sidebar()
 {
-    setStyleClass("green-box");
+    //setStyleClass("green-box");
 
     Wt::WWebWidget::setMargin(0);
 
@@ -21,4 +21,9 @@ Sidebar::Sidebar()
     auto button1 = vBox->addWidget(std::make_unique<WPushButton>());
     auto button2 = vBox->addWidget(std::make_unique<WPushButton>());
     auto button3 = vBox->addWidget(std::make_unique<WPushButton>());
+
+    button1->setStyleClass("button");
+    button2->setStyleClass("button");
+    button3->setStyleClass("button");
+    fileButton->setStyleClass("button");
 }

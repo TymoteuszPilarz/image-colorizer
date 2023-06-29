@@ -253,14 +253,11 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: \
  /usr/include/Wt/WBoxLayout.h /usr/include/Wt/WGridLayout.h \
  /usr/include/Wt/WLayout.h /usr/include/Wt/WLayoutImpl.h \
  /usr/include/Wt/WLayoutItemImpl.h /usr/include/Wt/WLayoutItem.h \
- /usr/include/Wt/WPushButton.h /usr/include/Wt/WAnchor.h \
- /usr/include/Wt/WImage.h /usr/include/Wt/WFormWidget.h \
- /usr/include/Wt/WValidator.h /usr/include/Wt/WText.h \
- /usr/include/Wt/WFileUpload.h \
+ /usr/include/Wt/WHBoxLayout.h /usr/include/Wt/WPushButton.h \
+ /usr/include/Wt/WAnchor.h /usr/include/Wt/WImage.h \
+ /usr/include/Wt/WFormWidget.h /usr/include/Wt/WValidator.h \
+ /usr/include/Wt/WText.h \
  /home/dedboi/CLionProjects/ImageColorization/src/Toolbar.h \
- /usr/include/Wt/WHBoxLayout.h \
- /home/dedboi/CLionProjects/ImageColorization/src/Sidebar.h \
- /home/dedboi/CLionProjects/ImageColorization/src/Content.h \
  /home/dedboi/CLionProjects/ImageColorization/src/Canvas.h \
  /usr/include/Wt/WPainter.h /usr/include/Wt/WBrush.h \
  /usr/include/Wt/WGradient.h /usr/include/Wt/WLineF.h \
@@ -270,15 +267,6 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: \
  /usr/include/Wt/WPen.h /usr/include/Wt/WShadow.h \
  /usr/include/Wt/WPaintedWidget.h /usr/include/Wt/WJavaScriptHandle.h \
  /usr/include/Wt/WJavaScriptObjectStorage.h /usr/include/Wt/WTemplate.h \
- /home/dedboi/CLionProjects/ImageColorization/src/DropBox.h \
- /usr/include/Wt/WFileDropWidget.h /usr/include/Wt/WResource.h \
- /usr/include/c++/13.1.1/condition_variable \
- /usr/include/c++/13.1.1/bits/unique_lock.h \
- /usr/include/c++/13.1.1/stop_token \
- /usr/include/c++/13.1.1/bits/std_thread.h \
- /usr/include/c++/13.1.1/semaphore \
- /usr/include/c++/13.1.1/bits/semaphore_base.h \
- /usr/include/c++/13.1.1/bits/atomic_timed_wait.h \
- /usr/include/c++/13.1.1/bits/this_thread_sleep.h /usr/include/sys/time.h \
- /usr/include/semaphore.h /usr/include/bits/semaphore.h \
- /usr/include/c++/13.1.1/mutex
+ /home/dedboi/CLionProjects/ImageColorization/src/ImagePainter.h \
+ /home/dedboi/CLionProjects/ImageColorization/src/Sidebar.h \
+ /home/dedboi/CLionProjects/ImageColorization/src/Content.h

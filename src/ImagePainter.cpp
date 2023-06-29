@@ -18,11 +18,20 @@ void ImagePainter::paintEvent(WPaintDevice* paintDevice)
 ImagePainter::ImagePainter()
 {
     setLayoutSizeAware(true);
-
+    //Canvas(image->height(),image->width());
 }
 
 void ImagePainter::setImage(Wt::WPainter::Image* image)
 {
     buffer.clear();
     this->image = image;
+}
+
+int ImagePainter::gerWidth()
+{
+    return image->width();
+}
+int ImagePainter::getHeight()
+{
+    return image->height();
 }

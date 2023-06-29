@@ -43,12 +43,14 @@ Content::Content()
 
     imagePainter = addWidget(std::make_unique<ImagePainter>());
 
-    loadImage("res/image.jpg");
+    loadImage("FUCK2.png");
+
+
 }
 
 void Content::loadImage(const std::string& fileName)
 {
     image = std::make_unique<WPainter::Image>(fileName, fileName);
     imagePainter->setImage(image.get());
-    //imagePainter->resize(592, 329);
+    imagePainter->resize(592, 329);
 }

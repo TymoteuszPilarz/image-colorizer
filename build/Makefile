@@ -177,29 +177,29 @@ src/Content.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/Content.cpp.s
 .PHONY : src/Content.cpp.s
 
-src/DropBox.o: src/DropBox.cpp.o
-.PHONY : src/DropBox.o
+src/ImagePainter.o: src/ImagePainter.cpp.o
+.PHONY : src/ImagePainter.o
 
 # target to build an object file
-src/DropBox.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o
-.PHONY : src/DropBox.cpp.o
+src/ImagePainter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.o
+.PHONY : src/ImagePainter.cpp.o
 
-src/DropBox.i: src/DropBox.cpp.i
-.PHONY : src/DropBox.i
+src/ImagePainter.i: src/ImagePainter.cpp.i
+.PHONY : src/ImagePainter.i
 
 # target to preprocess a source file
-src/DropBox.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/DropBox.cpp.i
-.PHONY : src/DropBox.cpp.i
+src/ImagePainter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.i
+.PHONY : src/ImagePainter.cpp.i
 
-src/DropBox.s: src/DropBox.cpp.s
-.PHONY : src/DropBox.s
+src/ImagePainter.s: src/ImagePainter.cpp.s
+.PHONY : src/ImagePainter.s
 
 # target to generate assembly for a file
-src/DropBox.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/DropBox.cpp.s
-.PHONY : src/DropBox.cpp.s
+src/ImagePainter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImageColorization.dir/build.make CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.s
+.PHONY : src/ImagePainter.cpp.s
 
 src/Sidebar.o: src/Sidebar.cpp.o
 .PHONY : src/Sidebar.o
@@ -288,9 +288,9 @@ help:
 	@echo "... src/Content.o"
 	@echo "... src/Content.i"
 	@echo "... src/Content.s"
-	@echo "... src/DropBox.o"
-	@echo "... src/DropBox.i"
-	@echo "... src/DropBox.s"
+	@echo "... src/ImagePainter.o"
+	@echo "... src/ImagePainter.i"
+	@echo "... src/ImagePainter.s"
 	@echo "... src/Sidebar.o"
 	@echo "... src/Sidebar.i"
 	@echo "... src/Sidebar.s"

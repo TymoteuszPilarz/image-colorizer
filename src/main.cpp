@@ -23,10 +23,10 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
 {
     using namespace Wt;
 
-    useStyleSheet(Wt::WLink("css/styles.css"));
+    useStyleSheet("css/style.css");
 
     auto container = root()->addWidget(std::make_unique<WContainerWidget>());
-    container->setStyleClass("blue-box");
+    //container->setStyleClass("blue-box");
 
     auto vBox = container->setLayout(std::make_unique<WVBoxLayout>());
     vBox->setContentsMargins(0, 0, 0, 0);

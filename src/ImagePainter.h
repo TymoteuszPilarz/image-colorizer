@@ -18,6 +18,8 @@
 
 class ImagePainter : public Wt::WPaintedWidget
 {
+
+
 private:
     struct BufferElement
     {
@@ -35,6 +37,13 @@ public:
     ImagePainter();
 
     void setImage(Wt::WPainter::Image* image);
+
+    int getHeight();
+    int gerWidth();
+
+
+
+
 };
 
 

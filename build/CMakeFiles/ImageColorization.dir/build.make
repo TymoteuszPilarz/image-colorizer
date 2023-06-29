@@ -125,10 +125,24 @@ CMakeFiles/ImageColorization.dir/src/Content.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ImageColorization.dir/src/Content.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dedboi/CLionProjects/ImageColorization/src/Content.cpp -o CMakeFiles/ImageColorization.dir/src/Content.cpp.s
 
+CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.o: CMakeFiles/ImageColorization.dir/flags.make
+CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.o: /home/dedboi/CLionProjects/ImageColorization/src/ImagePainter.cpp
+CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.o: CMakeFiles/ImageColorization.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.o -MF CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.o.d -o CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.o -c /home/dedboi/CLionProjects/ImageColorization/src/ImagePainter.cpp
+
+CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dedboi/CLionProjects/ImageColorization/src/ImagePainter.cpp > CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.i
+
+CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dedboi/CLionProjects/ImageColorization/src/ImagePainter.cpp -o CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.s
+
 CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o: CMakeFiles/ImageColorization.dir/flags.make
 CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o: /home/dedboi/CLionProjects/ImageColorization/src/Canvas.cpp
 CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o: CMakeFiles/ImageColorization.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o -MF CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o.d -o CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o -c /home/dedboi/CLionProjects/ImageColorization/src/Canvas.cpp
 
 CMakeFiles/ImageColorization.dir/src/Canvas.cpp.i: cmake_force
@@ -139,28 +153,14 @@ CMakeFiles/ImageColorization.dir/src/Canvas.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ImageColorization.dir/src/Canvas.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dedboi/CLionProjects/ImageColorization/src/Canvas.cpp -o CMakeFiles/ImageColorization.dir/src/Canvas.cpp.s
 
-CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o: CMakeFiles/ImageColorization.dir/flags.make
-CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o: /home/dedboi/CLionProjects/ImageColorization/src/DropBox.cpp
-CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o: CMakeFiles/ImageColorization.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/dedboi/CLionProjects/ImageColorization/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o -MF CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o.d -o CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o -c /home/dedboi/CLionProjects/ImageColorization/src/DropBox.cpp
-
-CMakeFiles/ImageColorization.dir/src/DropBox.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ImageColorization.dir/src/DropBox.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dedboi/CLionProjects/ImageColorization/src/DropBox.cpp > CMakeFiles/ImageColorization.dir/src/DropBox.cpp.i
-
-CMakeFiles/ImageColorization.dir/src/DropBox.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ImageColorization.dir/src/DropBox.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dedboi/CLionProjects/ImageColorization/src/DropBox.cpp -o CMakeFiles/ImageColorization.dir/src/DropBox.cpp.s
-
 # Object files for target ImageColorization
 ImageColorization_OBJECTS = \
 "CMakeFiles/ImageColorization.dir/src/main.cpp.o" \
 "CMakeFiles/ImageColorization.dir/src/Toolbar.cpp.o" \
 "CMakeFiles/ImageColorization.dir/src/Sidebar.cpp.o" \
 "CMakeFiles/ImageColorization.dir/src/Content.cpp.o" \
-"CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o" \
-"CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o"
+"CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.o" \
+"CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o"
 
 # External object files for target ImageColorization
 ImageColorization_EXTERNAL_OBJECTS =
@@ -169,8 +169,8 @@ ImageColorization: CMakeFiles/ImageColorization.dir/src/main.cpp.o
 ImageColorization: CMakeFiles/ImageColorization.dir/src/Toolbar.cpp.o
 ImageColorization: CMakeFiles/ImageColorization.dir/src/Sidebar.cpp.o
 ImageColorization: CMakeFiles/ImageColorization.dir/src/Content.cpp.o
+ImageColorization: CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.o
 ImageColorization: CMakeFiles/ImageColorization.dir/src/Canvas.cpp.o
-ImageColorization: CMakeFiles/ImageColorization.dir/src/DropBox.cpp.o
 ImageColorization: CMakeFiles/ImageColorization.dir/build.make
 ImageColorization: /usr/lib/libwt.so
 ImageColorization: /usr/lib/libwthttp.so

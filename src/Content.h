@@ -10,6 +10,7 @@
 #include <Wt/WContainerWidget.h>
 
 #include "ImagePainter.h"
+#include "Canvas.h"
 
 class Content : public Wt::WContainerWidget
 {

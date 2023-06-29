@@ -6,11 +6,16 @@
 #define IMAGECOLORIZATION_TOOLBAR_H
 
 #include <Wt/WContainerWidget.h>
+#include <Wt/WColor.h>
+#include "Canvas.h"
+#include "ImagePainter.h"
 
 class Toolbar : public Wt::WContainerWidget
 {
 public:
     Toolbar();
+
+
 };
 
 #endif //IMAGECOLORIZATION_TOOLBAR_H
