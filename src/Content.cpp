@@ -3,10 +3,13 @@
 //
 
 #include <memory>
+
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WPushButton.h>
+#include <opencv2/highgui.hpp>
 
 #include "Content.h"
+#include "Colorize.h"
 
 using namespace Wt;
 
@@ -41,7 +44,7 @@ Content::Content()
 
     imagePainter = addWidget(std::make_unique<ImagePainter>());
 
-    setImage("res/image.jpg");
+    setImage("in/image.png");
     imagePainter->setPenColor(StandardColor::Red);
     imagePainter->setImage(image.get());
 }
@@ -72,8 +75,38 @@ void Content::clearCanvas()
     imagePainter->clearCanvas();
 }
 
-void Content::saveToPNG()
+void Content::setGamma(double gamma)
 {
-    std::string filename = "out/out.png";
-    imagePainter->saveToPNG(filename);
+    this->gamma = gamma;
+}
+
+void Content::setThreshold(int threshold)
+{
+    this->threshold = threshold;
+}
+
+void Content::colorize()
+{
+    try
+    {
+        imagePainter->saveToPNG();
+
+        auto imageFile = "in/image.png";
+        auto scribblesFile = "out/scribbles.png";
+
+        auto image = cv::imread(imageFile);
+        auto scribbles = cv::imread(scribblesFile);
+        auto mask = co::getScribbleMask(image, scribbles, threshold);
+        auto colorImage = co::colorize(image, scribbles, mask, gamma);
+
+        cv::imwrite("out/out.png", colorImage);
+    }
+    catch (const std::runtime_error& e)
+    {
+        log("error") << e.what();
+    }
+}
+
+void Content::downloadPNG()
+{
 }

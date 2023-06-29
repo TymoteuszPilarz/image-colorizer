@@ -66,9 +66,11 @@ void ImagePainter::paintEvent(WPaintDevice* paintDevice)
         for (auto& element : buffer)
         {
             painter.save();
+
             painter.setPen(element.pen);
             painter.scale(WWebWidget::width().toPixels() / element.currentWidth, WWebWidget::height().toPixels() / element.currentHeight);
             painter.drawPath(element.painterPath);
+
             painter.restore();
         }
 
@@ -138,29 +140,37 @@ void ImagePainter::clearCanvas()
     update();
 }
 
-void ImagePainter::saveToPNG(const std::string& filename)
+void ImagePainter::saveToPNG()
 {
     if (image == nullptr)
     {
         return;
     }
 
-    WRasterImage pngImage("png", image->width(), image->height());
-
-    WPainter painter(&pngImage);
-    painter.setRenderHint(RenderHint::Antialiasing);
-
-    painter.drawImage(WRectF(0.0, 0.0, image->width(), image->height()), *image);
-
-    for (auto& element : buffer)
+    WRasterImage pngScribbles("png", image->width(), image->height());
     {
-        painter.save();
-        painter.setPen(element.pen);
-        painter.scale(static_cast<double>(image->width()) / element.currentWidth, static_cast<double>(image->height()) / element.currentHeight);
-        painter.drawPath(element.painterPath);
-        painter.restore();
+        WPainter painter(&pngScribbles);
+        painter.setRenderHint(RenderHint::Antialiasing);
+
+        painter.drawImage(WRectF(0.0, 0.0, image->width(), image->height()), *image);
+
+        for (auto& element: buffer)
+        {
+            painter.save();
+
+            auto scaledPen = element.pen;
+            scaledPen.setWidth(scaledPen.width().toPixels() / (static_cast<double>(image->width()) / element.currentWidth));
+
+            painter.setPen(scaledPen);
+            painter.scale(static_cast<double>(image->width()) / element.currentWidth,
+                          static_cast<double>(image->height()) / element.currentHeight);
+
+            painter.drawPath(element.painterPath);
+
+            painter.restore();
+        }
     }
 
-    std::ofstream file(filename, std::ios::out | std::ios::binary);
-    pngImage.write(file);
+    std::ofstream scribblesFile("out/scribbles.png", std::ios::out | std::ios::binary);
+    pngScribbles.write(scribblesFile);
 }

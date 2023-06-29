@@ -27,8 +27,8 @@ Toolbar::Toolbar(Content* content) : content(content)
     clear->clicked().connect(content, &Content::clearCanvas);
 
     auto save = hBox->addWidget(std::make_unique<WPushButton>());
-    save->setText("Save");
-    save->clicked().connect(content, &Content::saveToPNG);
+    save->setText("Colorize");
+    save->clicked().connect(content, &Content::colorize);
 
     auto button3 = hBox->addWidget(std::make_unique<WPushButton>());
 }

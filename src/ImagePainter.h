@@ -52,7 +52,7 @@ public:
     void undo();
     void clearCanvas();
 
-    void saveToPNG(const std::string& filename);
+    void saveToPNG();
 };
 
 

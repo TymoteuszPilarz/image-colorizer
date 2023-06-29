@@ -17,6 +17,9 @@ private:
     ImagePainter* imagePainter;
     std::unique_ptr<Wt::WPainter::Image> image;
 
+    double gamma = 2.0;
+    int threshold = 10;
+
     static std::tuple<int, int> getScaledSize(int sourceWidth, int sourceHeight, int destinationWidth, int destinationHeight);
 
 protected:
@@ -31,7 +34,11 @@ public:
     void undo();
     void clearCanvas();
 
-    void saveToPNG();
+    void setGamma(double gamma);
+    void setThreshold(int threshold);
+    void colorize();
+
+    void downloadPNG();
 };
 
 
