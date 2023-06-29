@@ -14,9 +14,11 @@ Toolbar::Toolbar(Content* content) : content(content)
 {
     setStyleClass("toolbar");
 
-    Wt::WWebWidget::setMargin(0);
+    //Wt::WWebWidget::setMargin(0);
 
     auto hBox = setLayout(std::make_unique<WHBoxLayout>());
+    hBox->setContentsMargins(0, 0, 0, 0);
+    hBox->setSpacing(0);
 
     auto undo = hBox->addWidget(std::make_unique<WPushButton>());
     undo->setText("Undo");
