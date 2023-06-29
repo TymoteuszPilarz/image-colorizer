@@ -22,7 +22,7 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
 {
     using namespace Wt;
 
-    useStyleSheet(Wt::WLink("../css/styles.css"));
+    useStyleSheet(Wt::WLink("css/styles.css"));
 
     auto container = root()->addWidget(std::make_unique<WContainerWidget>());
     //container->setStyleClass("background");
