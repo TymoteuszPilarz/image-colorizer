@@ -1,13 +1,21 @@
 .toolbar {
-    background-color: black;
+    background-color: #212124;
     margin: 0;
     height : 54px;
     min-height: 54px;
     max-height: 54px;
 }
 
+.sidebar {
+    background-color: #24b600;
+    margin: 0;
+    width : 300px;
+    min-width: 300px;
+    max-width: 300px;
+}
+
 .content {
-    background-color: #000000;
+    background-color: #212124;
     margin: 0;
 }
 
@@ -24,7 +32,7 @@ body {
 }
 
 .button {
-    background-color: #14154d;
+    background-color: #3d3a3a;
     border: none;
     color: white;
     text-align: center;
@@ -35,6 +43,7 @@ body {
 }
 
 .button:hover {
-    background-color: white;
-    color: black;
+    background-color: #1c1a1a;
+    color: white;
+
 }
