@@ -15,6 +15,7 @@
 #include <Wt/WPaintedWidget.h>
 #include <Wt/WPainter.h>
 #include <Wt/WPainterPath.h>
+#include "Canvas.h"
 
 class ImagePainter : public Wt::WPaintedWidget
 {
@@ -30,6 +31,14 @@ private:
 
     Wt::WPainter::Image* image;
 
+    Wt::WPainterPath path_;
+    Wt::WColor color_;
+
+    void mouseDown(const Wt::WMouseEvent& e);
+    void mouseDrag(const Wt::WMouseEvent& e);
+    void touchStart(const Wt::WTouchEvent& e);
+    void touchMove(const Wt::WTouchEvent& e);
+
 protected:
     void paintEvent(Wt::WPaintDevice* paintDevice) override;
 
@@ -38,8 +47,12 @@ public:
 
     void setImage(Wt::WPainter::Image* image);
 
-    int getHeight();
-    int gerWidth();
+    void clear();
+    void setColor(const Wt::WColor& c);
+
+
+
+
 
 
 

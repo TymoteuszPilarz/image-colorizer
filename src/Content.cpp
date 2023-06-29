@@ -44,6 +44,7 @@ Content::Content()
     imagePainter = addWidget(std::make_unique<ImagePainter>());
 
     loadImage("FUCK2.png");
+    auto canvas = std::make_unique<Canvas>(image->width(),image->height());
 
 
 }

@@ -242,4 +242,11 @@ CMakeFiles/ImageColorization.dir/src/ImagePainter.cpp.o: \
  /usr/include/Wt/WJavaScriptObjectStorage.h /usr/include/Wt/WPainter.h \
  /usr/include/Wt/WFont.h /usr/include/Wt/WPainterPath.h \
  /usr/include/Wt/WTransform.h /usr/include/Wt/WPen.h \
- /usr/include/Wt/WShadow.h
+ /usr/include/Wt/WShadow.h \
+ /home/dedboi/CLionProjects/ImageColorization/src/Canvas.h \
+ /usr/include/Wt/WCssDecorationStyle.h /usr/include/Wt/WBorder.h \
+ /usr/include/Wt/WLink.h /usr/include/Wt/WPushButton.h \
+ /usr/include/Wt/WAnchor.h /usr/include/Wt/WImage.h \
+ /usr/include/Wt/WFormWidget.h /usr/include/Wt/WValidator.h \
+ /usr/include/Wt/WText.h /usr/include/Wt/WTemplate.h \
+ /usr/include/Wt/WToolBar.h /usr/include/Wt/WCompositeWidget.h
