@@ -1,21 +1,14 @@
 .toolbar {
-    background-color: #212124;
+    background-color:rgb(40, 43, 48);
     margin: 0;
     height : 54px;
     min-height: 54px;
     max-height: 54px;
 }
 
-.sidebar {
-    background-color: #24b600;
-    margin: 0;
-    width : 300px;
-    min-width: 300px;
-    max-width: 300px;
-}
 
 .content {
-    background-color: #212124;
+    background-color: rgb(40, 43, 48);
     margin: 0;
 }
 
@@ -26,13 +19,13 @@
 }
 
 body {
-    background-color: #212124;
+    background-color: rgb(40, 43, 48);
     height: 100vh;
     margin: 0;
 }
 
 .button {
-    background-color: #3d3a3a;
+    background-color: rgb(40, 43, 48);
     border: none;
     color: white;
     text-align: center;
