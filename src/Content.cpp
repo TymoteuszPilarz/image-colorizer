@@ -44,7 +44,7 @@ Content::Content()
 
     imagePainter = addWidget(std::make_unique<ImagePainter>());
 
-    setImage("in/image.png");
+    setImage("in/image.jpg");
     imagePainter->setPenColor(StandardColor::Red);
     imagePainter->setImage(image.get());
 }

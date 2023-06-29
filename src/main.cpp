@@ -6,12 +6,10 @@
 #include <Wt/WLink.h>
 #include <Wt/WLinkedCssStyleSheet.h>
 #include <Wt/WVBoxLayout.h>
-#include <Wt/WHBoxLayout.h>
 #include <Wt/WPushButton.h>
 #include <Wt/WTable.h>
 
 #include "Toolbar.h"
-#include "Sidebar.h"
 #include "Content.h"
 
 class HelloApplication : public Wt::WApplication
@@ -33,24 +31,14 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
     vBox->setContentsMargins(0, 0, 0, 0);
     vBox->setSpacing(0);
 
-    /// Content needs to be created earlier, because it is used as a parameter in Toolbar and Sidebar contructors, but appears in vbox after the Toolbar
+    /// Content needs to be created earlier, because it is used as a parameter in Toolbar contructor, but appears in vbox after the Toolbar
     auto contentPtr = std::make_unique<Content>();
 
     /// Toolbar setup
     auto toolbar = vBox->addWidget(std::make_unique<Toolbar>(contentPtr.get()));
 
-    /// Sidebar and content container setup
-    auto subcontainer = vBox->addWidget(std::make_unique<WContainerWidget>());
-
-    auto hBox = subcontainer->setLayout(std::make_unique<WHBoxLayout>());
-    hBox->setContentsMargins(0, 0, 0, 0);
-    hBox->setSpacing(0);
-
-    /// Sidebar setup
-    auto sidebar = hBox->addWidget(std::make_unique<Sidebar>(contentPtr.get()));
-
     /// Content setup
-    auto content = hBox->addWidget(std::move(contentPtr));
+    auto content = vBox->addWidget(std::move(contentPtr));
 }
 
 int main(int argc, char **argv)
