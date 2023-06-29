@@ -39,7 +39,7 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 25px;
-
+    font-family: "Times New Roman", Times, Serif;
     transition-duration: 0.4s;
 }
 
