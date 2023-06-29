@@ -12,6 +12,7 @@ void ImagePainter::paintEvent(WPaintDevice* paintDevice)
 {
     Wt::WPainter painter(paintDevice);
 
+
     painter.drawImage(WRectF(0.0, 0.0, WWebWidget::width().toPixels(), WWebWidget::height().toPixels()), *image);
 
     painter.setRenderHint(Wt::RenderHint::Antialiasing);
@@ -22,7 +23,15 @@ void ImagePainter::paintEvent(WPaintDevice* paintDevice)
     pen.setJoinStyle(Wt::PenJoinStyle::Miter);
     painter.setPen(pen);
     painter.drawPath(path_);
-    path_ = Wt::WPainterPath(path_.currentPosition());
+
+    //path_ = Wt::WPainterPath(path_.currentPosition());
+
+    mouseDragged().connect(this, &ImagePainter::mouseDrag);
+    mouseWentDown().connect(this, &ImagePainter::mouseDown);
+    touchStarted().connect(this, &ImagePainter::touchStart);
+    touchMoved().connect(this, &ImagePainter::touchMove);
+
+
 
 
 }
@@ -31,12 +40,6 @@ ImagePainter::ImagePainter()
 {
     setLayoutSizeAware(true);
     //Wt::WPaintedWidget::resize(image->width(),image->height());
-
-    mouseDragged().connect(this, &ImagePainter::mouseDrag);
-    mouseWentDown().connect(this, &ImagePainter::mouseDown);
-    touchStarted().connect(this, &ImagePainter::touchStart);
-    touchMoved().connect(this, &ImagePainter::touchMove);
-
     color_ = Wt::WColor(Wt::StandardColor::Black);
 
 }
