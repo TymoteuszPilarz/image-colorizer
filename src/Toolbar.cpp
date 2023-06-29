@@ -31,6 +31,7 @@ Toolbar::Toolbar(Content* content) : content(content)
     auto save = hBox->addWidget(std::make_unique<WPushButton>());
     save->setText("Colorize");
     save->clicked().connect(content, &Content::colorize);
+    save->setStyleClass("button");
 
     auto button3 = hBox->addWidget(std::make_unique<WPushButton>());
     button3->setStyleClass("button");

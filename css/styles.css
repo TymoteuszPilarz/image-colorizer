@@ -1,5 +1,5 @@
 .toolbar {
-    background-color: #e3d000;
+    background-color: black;
     margin: 0;
     height : 40px;
     min-height: 40px;
@@ -20,7 +20,7 @@
 }
 
 .background {
-    background-color: #06dbf8;
+    background-color: #14154d;
     height: 100vh;
     margin: 0;
 }
