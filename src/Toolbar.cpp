@@ -21,14 +21,17 @@ Toolbar::Toolbar(Content* content) : content(content)
     auto undo = hBox->addWidget(std::make_unique<WPushButton>());
     undo->setText("Undo");
     undo->clicked().connect(content, &Content::undo);
+    undo->setStyleClass("button");
 
     auto clear = hBox->addWidget(std::make_unique<WPushButton>());
     clear->setText("Clear");
     clear->clicked().connect(content, &Content::clearCanvas);
+    clear->setStyleClass("button");
 
     auto save = hBox->addWidget(std::make_unique<WPushButton>());
     save->setText("Colorize");
     save->clicked().connect(content, &Content::colorize);
 
     auto button3 = hBox->addWidget(std::make_unique<WPushButton>());
+    button3->setStyleClass("button");
 }
