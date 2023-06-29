@@ -268,5 +268,6 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: \
  /usr/include/Wt/WPaintedWidget.h /usr/include/Wt/WJavaScriptHandle.h \
  /usr/include/Wt/WJavaScriptObjectStorage.h /usr/include/Wt/WTemplate.h \
  /home/dedboi/CLionProjects/ImageColorization/src/ImagePainter.h \
+ /usr/include/Wt/WColorPicker.h \
  /home/dedboi/CLionProjects/ImageColorization/src/Sidebar.h \
  /home/dedboi/CLionProjects/ImageColorization/src/Content.h

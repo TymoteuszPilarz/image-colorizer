@@ -26,11 +26,12 @@ Toolbar::Toolbar()
     auto button1 = hBox->addWidget(std::make_unique<WPushButton>("Test"));
     auto button2 = hBox->addWidget(std::make_unique<WPushButton>("Test"));
     auto button3 = hBox->addWidget(std::make_unique<WPushButton>());
-
+    auto slider = hBox->addWidget(std::make_unique<WColorPicker>());
     button1->setStyleClass("button");
     button2->setStyleClass("button");
     button3->setStyleClass("button");
     fileButton->setStyleClass("button");
+    slider->setStyleClass("color-picker");
 
 
 }

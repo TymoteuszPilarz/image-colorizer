@@ -9,6 +9,7 @@
 #include <Wt/WColor.h>
 #include "Canvas.h"
 #include "ImagePainter.h"
+#include <Wt/WColorPicker.h>
 
 class Toolbar : public Wt::WContainerWidget
 {

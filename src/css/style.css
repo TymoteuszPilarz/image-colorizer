@@ -24,7 +24,7 @@ body{
 }
 
 .button {
-    background-color: #123ed3;
+    background-color: #0d0e4a;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -36,8 +36,11 @@ body{
 }
 
 .button:hover {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
+}
 
+.color-picker{
+    min-height: 30px;
 
 }

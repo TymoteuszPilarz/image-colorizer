@@ -1740,7 +1740,8 @@ CMakeFiles/ImageColorization.dir/src/Toolbar.cpp.o: /home/dedboi/CLionProjects/I
   /usr/include/Wt/WTemplate.h \
   /usr/include/Wt/WToolBar.h \
   /usr/include/Wt/WCompositeWidget.h \
-  /home/dedboi/CLionProjects/ImageColorization/src/ImagePainter.h
+  /home/dedboi/CLionProjects/ImageColorization/src/ImagePainter.h \
+  /usr/include/Wt/WColorPicker.h
 
 CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/ImageColorization/src/main.cpp \
   /usr/include/stdc-predef.h \
@@ -2122,6 +2123,7 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
   /usr/include/Wt/WJavaScriptObjectStorage.h \
   /usr/include/Wt/WTemplate.h \
   /home/dedboi/CLionProjects/ImageColorization/src/ImagePainter.h \
+  /usr/include/Wt/WColorPicker.h \
   /home/dedboi/CLionProjects/ImageColorization/src/Sidebar.h \
   /home/dedboi/CLionProjects/ImageColorization/src/Content.h
 
@@ -2299,6 +2301,8 @@ CMakeFiles/ImageColorization.dir/src/main.cpp.o: /home/dedboi/CLionProjects/Imag
 /usr/include/c++/13.1.1/format:
 
 /usr/include/c++/13.1.1/bits/erase_if.h:
+
+/usr/include/Wt/WColorPicker.h:
 
 /usr/include/c++/13.1.1/bits/enable_special_members.h:
 
