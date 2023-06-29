@@ -25,6 +25,7 @@ void ImagePainter::paintEvent(WPaintDevice* paintDevice)
     painter.drawPath(path_);
 
     //path_ = Wt::WPainterPath(path_.currentPosition());
+    //ehhhh
 
     mouseDragged().connect(this, &ImagePainter::mouseDrag);
     mouseWentDown().connect(this, &ImagePainter::mouseDown);
