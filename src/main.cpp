@@ -8,21 +8,27 @@
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WPushButton.h>
 #include <Wt/WTable.h>
+#include <Wt/WOverlayLoadingIndicator.h>
 
 #include "Toolbar.h"
 #include "Content.h"
 
-class HelloApplication : public Wt::WApplication
+class ImageColorizer : public Wt::WApplication
 {
 public:
-    HelloApplication(const Wt::WEnvironment& env);
+    explicit ImageColorizer(const Wt::WEnvironment& env);
 };
 
-HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplication(env)
+ImageColorizer::ImageColorizer(const Wt::WEnvironment& env) : Wt::WApplication(env)
 {
     using namespace Wt;
 
     useStyleSheet(Wt::WLink("css/styles.css"));
+    setTitle("Colorizer");
+
+    auto loadingIndicator = std::make_unique<Wt::WOverlayLoadingIndicator>("loader", "loader-background");
+    loadingIndicator->setMessage("");
+    setLoadingIndicator(std::move(loadingIndicator));
 
     auto container = root()->addWidget(std::make_unique<WContainerWidget>());
     container->setStyleClass("background");
@@ -31,19 +37,18 @@ HelloApplication::HelloApplication(const Wt::WEnvironment& env) : Wt::WApplicati
     vBox->setContentsMargins(0, 0, 0, 0);
     vBox->setSpacing(0);
 
-    /// Content needs to be created earlier, because it is used as a parameter in Toolbar contructor, but appears in vbox after the Toolbar
+    // Content needs to be created earlier, because it is used as a parameter in Toolbar contructor, but appears in vbox after the Toolbar
     auto contentPtr = std::make_unique<Content>();
 
-    /// Toolbar setup
     auto toolbar = vBox->addWidget(std::make_unique<Toolbar>(contentPtr.get()));
 
-    /// Content setup
     auto content = vBox->addWidget(std::move(contentPtr));
 }
 
 int main(int argc, char **argv)
 {
-    return Wt::WRun(argc, argv, [](const Wt::WEnvironment& env) {
-        return std::make_unique<HelloApplication>(env);
+    return Wt::WRun(argc, argv, [](const Wt::WEnvironment& env)
+    {
+        return std::make_unique<ImageColorizer>(env);
     });
 }

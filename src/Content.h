@@ -14,11 +14,15 @@
 class Content : public Wt::WContainerWidget
 {
 private:
+    int width = 0;
+    int height = 0;
+
     ImagePainter* imagePainter;
-    std::unique_ptr<Wt::WPainter::Image> image;
 
     double gamma = 2.0;
     int threshold = 10;
+
+    std::string resultFileName;
 
     static std::tuple<int, int> getScaledSize(int sourceWidth, int sourceHeight, int destinationWidth, int destinationHeight);
 
@@ -28,17 +32,19 @@ protected:
 public:
     Content();
 
-    void setImage(const std::string& fileName);
     void setPenColor(const Wt::WColor& color);
     void setPenWidth(int width);
     void undo();
+    void redo();
     void clearCanvas();
 
     void setGamma(double gamma);
     void setThreshold(int threshold);
-    void colorize();
+    void colorize(const std::string& fileName);
+    void hideResult();
 
-    void downloadPNG();
+    void setImage(const std::string& fileName);
+    void downloadImage();
 };
 
 

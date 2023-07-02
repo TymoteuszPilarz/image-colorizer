@@ -25,7 +25,7 @@ using namespace Wt;
 
 void ImagePainter::mouseDown(const Wt::WMouseEvent& e)
 {
-    if (image == nullptr)
+    if (!isImageSet() && action != Action::result)
     {
         return;
     }
@@ -37,13 +37,14 @@ void ImagePainter::mouseDown(const Wt::WMouseEvent& e)
 
 void ImagePainter::mouseDrag(const Wt::WMouseEvent& e)
 {
-    if (image == nullptr)
+    if (!isImageSet() && action != Action::result)
     {
         return;
     }
 
     Wt::Coordinates c = e.widget();
     buffer.back().painterPath.lineTo(c.x, c.y);
+    redoBuffer.clear();
     painterPath.lineTo(c.x, c.y);
 
     update(PaintFlag::Update);
@@ -51,7 +52,7 @@ void ImagePainter::mouseDrag(const Wt::WMouseEvent& e)
 
 void ImagePainter::paintEvent(WPaintDevice* paintDevice)
 {
-    if (image == nullptr)
+    if (!isImageSet())
     {
         return;
     }
@@ -59,7 +60,18 @@ void ImagePainter::paintEvent(WPaintDevice* paintDevice)
     WPainter painter(paintDevice);
     painter.setRenderHint(RenderHint::Antialiasing);
 
-    if (repaintRequired)
+    if (action == Action::result)
+    {
+        painter.drawImage(WRectF(0.0, 0.0, WWebWidget::width().toPixels(), WWebWidget::height().toPixels()), *resultImage);
+    }
+    else if (action == Action::update)
+    {
+        painter.setPen(pen);
+
+        painter.drawPath(painterPath);
+        painterPath = painterPath.currentPosition();
+    }
+    else if (action == Action::repaint)
     {
         painter.drawImage(WRectF(0.0, 0.0, WWebWidget::width().toPixels(), WWebWidget::height().toPixels()), *image);
 
@@ -74,14 +86,7 @@ void ImagePainter::paintEvent(WPaintDevice* paintDevice)
             painter.restore();
         }
 
-        repaintRequired = false;
-    }
-    else
-    {
-        painter.setPen(pen);
-
-        painter.drawPath(painterPath);
-        painterPath = painterPath.currentPosition();
+        action = Action::update;
     }
 
     painter.end();
@@ -93,7 +98,7 @@ ImagePainter::ImagePainter()
     mouseWentDown().connect(this, &ImagePainter::mouseDown);
 
     pen.setWidth(3);
-    pen.setColor(StandardColor::Black);
+    pen.setColor(StandardColor::Red);
     pen.setCapStyle(Wt::PenCapStyle::Round);
     pen.setJoinStyle(Wt::PenJoinStyle::Miter);
 }
@@ -102,18 +107,59 @@ void ImagePainter::resize(const Wt::WLength& width, const Wt::WLength& height)
 {
     if (width != WWebWidget::width() || height != WWebWidget::height())
     {
-        repaintRequired = true;
+        if (action != Action::result)
+        {
+            action = Action::repaint;
+        }
         WPaintedWidget::resize(width, height);
     }
 }
 
-void ImagePainter::setImage(Wt::WPainter::Image* image)
+void ImagePainter::setImage(std::unique_ptr<WPainter::Image> image)
 {
     buffer.clear();
-    this->image = image;
+    redoBuffer.clear();
+    this->image = std::move(image);
+    action = Action::repaint;
+    update();
 }
 
-void ImagePainter::setPenColor(const Wt::WColor& color)
+bool ImagePainter::isImageSet() const
+{
+    return image != nullptr;
+}
+
+int ImagePainter::getImageWidth() const
+{
+    if (isImageSet())
+    {
+        return image->width();
+    }
+
+    return 0;
+}
+
+int ImagePainter::getImageHeight() const
+{
+    if (isImageSet())
+    {
+        return image->height();
+    }
+
+    return 0;
+}
+
+std::string ImagePainter::getImageFileName() const
+{
+    if (isImageSet())
+    {
+        return image->uri();
+    }
+
+    return "";
+}
+
+void ImagePainter::setPenColor(const WColor& color)
 {
     pen.setColor(color);
 }
@@ -125,10 +171,22 @@ void ImagePainter::setPenWidth(int width)
 
 void ImagePainter::undo()
 {
-    if (!buffer.empty())
+    if (!buffer.empty() && action != Action::result)
     {
+        redoBuffer.push_back(buffer.back());
         buffer.pop_back();
-        repaintRequired = true;
+        action = Action::repaint;
+        update();
+    }
+}
+
+void ImagePainter::redo()
+{
+    if (!redoBuffer.empty() && action != Action::result)
+    {
+        buffer.push_back(redoBuffer.back());
+        redoBuffer.pop_back();
+        action = Action::repaint;
         update();
     }
 }
@@ -136,13 +194,14 @@ void ImagePainter::undo()
 void ImagePainter::clearCanvas()
 {
     buffer.clear();
-    repaintRequired = true;
+    redoBuffer.clear();
+    action = Action::repaint;
     update();
 }
 
-void ImagePainter::saveToPNG()
+void ImagePainter::saveScribblesToPNG()
 {
-    if (image == nullptr)
+    if (!isImageSet())
     {
         return;
     }
@@ -173,4 +232,18 @@ void ImagePainter::saveToPNG()
 
     std::ofstream scribblesFile("out/scribbles.png", std::ios::out | std::ios::binary);
     pngScribbles.write(scribblesFile);
+}
+
+void ImagePainter::showResult(std::unique_ptr<Wt::WPainter::Image> image)
+{
+    resultImage = std::move(image);
+    action = Action::result;
+    update();
+}
+
+void ImagePainter::hideResult()
+{
+    resultImage.reset();
+    action = Action::repaint;
+    update();
 }

@@ -16,6 +16,8 @@
 #include <Wt/WPainter.h>
 #include <Wt/WPainterPath.h>
 
+enum class Action {update, repaint, result};
+
 class ImagePainter : public Wt::WPaintedWidget
 {
 private:
@@ -27,13 +29,15 @@ private:
         int currentHeight;
     };
     std::vector<BufferElement> buffer;
+    std::vector<BufferElement> redoBuffer;
 
-    Wt::WPainter::Image* image = nullptr;
+    std::unique_ptr<Wt::WPainter::Image> image;
+    std::unique_ptr<Wt::WPainter::Image> resultImage;
 
     Wt::WPainterPath painterPath;
     Wt::WPen pen;
 
-    bool repaintRequired = true;
+    Action action = Action::update;
 
     void mouseDown(const Wt::WMouseEvent& e);
     void mouseDrag(const Wt::WMouseEvent& e);
@@ -46,13 +50,22 @@ public:
 
     void resize(const Wt::WLength& width, const Wt::WLength& height) override;
 
-    void setImage(Wt::WPainter::Image* image);
+    void setImage(std::unique_ptr<Wt::WPainter::Image> image);
+    bool isImageSet() const;
+    int getImageWidth() const;
+    int getImageHeight() const;
+    std::string getImageFileName() const;
+
     void setPenColor(const Wt::WColor& color);
     void setPenWidth(int width);
+
     void undo();
+    void redo();
     void clearCanvas();
 
-    void saveToPNG();
+    void saveScribblesToPNG();
+    void showResult(std::unique_ptr<Wt::WPainter::Image> image);
+    void hideResult();
 };
 
 

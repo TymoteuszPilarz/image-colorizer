@@ -3,9 +3,14 @@
 //
 
 #include <memory>
+#include <filesystem>
 
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WPushButton.h>
+#include <Wt/WFileResource.h>
+#include <Wt/WApplication.h>
+#include <Wt/WLink.h>
+
 #include <opencv2/highgui.hpp>
 
 #include "Content.h"
@@ -28,7 +33,10 @@ std::tuple<int, int> Content::getScaledSize(int sourceWidth, int sourceHeight, i
 
 void Content::layoutSizeChanged(int width, int height)
 {
-    auto [imagePainterWidth, imagePainterHeight] = getScaledSize(image->width(), image->height(), width, height);
+    this->width = width;
+    this->height = height;
+
+    auto [imagePainterWidth, imagePainterHeight] = getScaledSize(imagePainter->getImageWidth(), imagePainter->getImageHeight(), width, height);
 
     imagePainter->resize(imagePainterWidth, imagePainterHeight);
 
@@ -43,16 +51,6 @@ Content::Content()
     WWebWidget::setMargin(0);
 
     imagePainter = addWidget(std::make_unique<ImagePainter>());
-
-    setImage("in/image.jpg");
-    imagePainter->setPenColor(StandardColor::Red);
-    imagePainter->setImage(image.get());
-}
-
-void Content::setImage(const std::string& fileName)
-{
-    image = std::make_unique<WPainter::Image>(fileName, fileName);
-    imagePainter->setImage(image.get());
 }
 
 void Content::setPenColor(const Wt::WColor& color)
@@ -70,6 +68,11 @@ void Content::undo()
     imagePainter->undo();
 }
 
+void Content::redo()
+{
+    imagePainter->redo();
+}
+
 void Content::clearCanvas()
 {
     imagePainter->clearCanvas();
@@ -85,13 +88,20 @@ void Content::setThreshold(int threshold)
     this->threshold = threshold;
 }
 
-void Content::colorize()
+void Content::colorize(const std::string& fileName)
 {
+    resultFileName = fileName;
+
+    if (!imagePainter->isImageSet())
+    {
+        return;
+    }
+
     try
     {
-        imagePainter->saveToPNG();
+        imagePainter->saveScribblesToPNG();
 
-        auto imageFile = "in/image.png";
+        auto imageFile = imagePainter->getImageFileName();
         auto scribblesFile = "out/scribbles.png";
 
         auto image = cv::imread(imageFile);
@@ -99,14 +109,42 @@ void Content::colorize()
         auto mask = co::getScribbleMask(image, scribbles, threshold);
         auto colorImage = co::colorize(image, scribbles, mask, gamma);
 
-        cv::imwrite("out/out.png", colorImage);
+        cv::imwrite(fileName, colorImage);
     }
     catch (const std::runtime_error& e)
     {
         log("error") << e.what();
     }
+
+    auto image = std::make_unique<WPainter::Image>(fileName, fileName);
+    imagePainter->showResult(std::move(image));
 }
 
-void Content::downloadPNG()
+void Content::hideResult()
 {
+    imagePainter->hideResult();
+}
+
+void Content::setImage(const std::string& fileName)
+{
+    auto image = std::make_unique<WPainter::Image>(fileName, fileName);
+
+    auto [imagePainterWidth, imagePainterHeight] = getScaledSize(image->width(), image->height(), width, height);
+    imagePainter->resize(imagePainterWidth, imagePainterHeight);
+
+    imagePainter->setImage(std::move(image));
+}
+
+void Content::downloadImage()
+{
+    if (resultFileName == "")
+    {
+        return;
+    }
+
+    auto imageFile = std::make_shared<Wt::WFileResource>("image/png", resultFileName);
+    imageFile->suggestFileName("out.png");
+    Wt::WLink link = Wt::WLink(imageFile);
+    link.setTarget(Wt::LinkTarget::NewWindow);
+    link.resolveUrl(WApplication::instance());
 }
