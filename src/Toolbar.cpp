@@ -4,6 +4,7 @@
 
 #include <memory>
 #include <filesystem>
+#include <string>
 
 #include <Wt/WHBoxLayout.h>
 #include <Wt/WBreak.h>
@@ -16,26 +17,11 @@
 #include <Wt/WPoint.h>
 #include <Wt/WFileUpload.h>
 #include <Wt/WFileResource.h>
+#include <Wt/WApplication.h>
 
 #include "Toolbar.h"
 
 using namespace Wt;
-
-Toolbar::Toolbar(Content* content) : content(content)
-{
-    setStyleClass("toolbar");
-
-    hBoxSetup();
-    fileMenuSetup();
-    editMenuSetup();
-    colorPickerSetup();
-
-    // spacing
-    hBox->addWidget(std::make_unique<WContainerWidget>(), 1);
-
-    colorizeButtonSetup();
-    showButtonSetup();
-}
 
 void Toolbar::hBoxSetup()
 {
@@ -48,51 +34,65 @@ void Toolbar::fileMenuSetup()
 {
     fileMenu = std::make_unique<WPopupMenu>();
     fileMenu->setStyleClass("menu");
-    fileMenu->hideOnSelect();
 
+    uploadButtonSetup();
+    downloadButtonSetup();
+    fileButtonSetup();
+}
+
+void Toolbar::uploadButtonSetup()
+{
     uploadButton = fileMenu->addItem("Upload");
     uploadButton->setStyleClass("menu-item");
-    uploadButton->clicked().connect([fileMenu = fileMenu.get()]()
-    {
-        fileMenu->hide();
-    });
+//    uploadButton->clicked().connect([fileMenu = fileMenu.get()]()
+//    {
+//        fileMenu->hide();
+//    });
+
     auto fileUpload = uploadButton->addWidget(std::make_unique<Wt::WFileUpload>());
     fileUpload->setDisplayWidget(uploadButton);
     fileUpload->hide();
     fileUpload->setMultiple(false);
     fileUpload->setFilters("image/png, image/jpeg");
     fileUpload->changed().connect(fileUpload, &WFileUpload::upload);
-    fileUpload->uploaded().connect([content = content, fileUpload = fileUpload]()
+    fileUpload->uploaded().connect([this, fileUpload]()
     {
+        std::string tempFileName = fileUpload->spoolFileName();
         fileUpload->stealSpooledFile();
 
-        // File name must be changed every time new image is uploaded, because WPaintDevice caches images based on their URI
-        static int suffix = 0;
-        std::filesystem::remove("in/image" + std::to_string(suffix));
-        ++suffix;
-        std::string fileName = "in/image" + std::to_string(suffix);
+        std::string fileName = generateUploadFileName();
 
-        std::filesystem::rename(fileUpload->spoolFileName(), fileName);
+        std::filesystem::rename(tempFileName, fileName);
+
         content->setImage(fileName);
+        colorizeButton->enable();
     });
     fileUpload->fileTooLarge().connect([content = content, fileUpload = fileUpload]()
     {
         log("error") << "File too large";
     });
+}
 
+void Toolbar::downloadButtonSetup()
+{
     downloadButton = fileMenu->addItem("Download");
     downloadButton->setStyleClass("menu-item");
-    //downloadButton->clicked().connect(content, &Content::downloadImage);
-    auto imageFile = std::make_shared<Wt::WFileResource>("image/png", "out/out1.png");
-    imageFile->suggestFileName("out.png");
+
+    auto imageFile = std::make_shared<Wt::WFileResource>("image/png", getDownloadFileName());
+    imageFile->suggestFileName("color_image.png");
+
     Wt::WLink link = Wt::WLink(imageFile);
     link.setTarget(Wt::LinkTarget::NewWindow);
-    downloadButton->setLink(link);
-    downloadButton->clicked().connect([fileMenu = fileMenu.get()]()
-    {
-        fileMenu->hide();
-    });
 
+    downloadButton->setLink(link);
+//    downloadButton->clicked().connect([fileMenu = fileMenu.get()]()
+//    {
+//        fileMenu->hide();
+//    });
+}
+
+void Toolbar::fileButtonSetup()
+{
     fileButton = hBox->addWidget(std::make_unique<WPushButton>());
     fileButton->setStyleClass("button");
     fileButton->setText("File");
@@ -117,26 +117,26 @@ void Toolbar::editMenuSetup()
     undoButton = editMenu->addItem("Undo");
     undoButton->setStyleClass("menu-item");
     undoButton->clicked().connect(content, &Content::undo);
-    undoButton->clicked().connect([editMenu = editMenu.get()]()
-    {
-        editMenu->hide();
-    });
+//    undoButton->clicked().connect([editMenu = editMenu.get()]()
+//    {
+//        editMenu->hide();
+//    });
 
     redoButton = editMenu->addItem("Redo");
     redoButton->setStyleClass("menu-item");
     redoButton->clicked().connect(content, &Content::redo);
-    redoButton->clicked().connect([editMenu = editMenu.get()]()
-    {
-        editMenu->hide();
-    });
+//    redoButton->clicked().connect([editMenu = editMenu.get()]()
+//    {
+//        editMenu->hide();
+//    });
 
     clearButton = editMenu->addItem("Clear");
     clearButton->setStyleClass("menu-item");
     clearButton->clicked().connect(content, &Content::clearCanvas);
-    clearButton->clicked().connect([editMenu = editMenu.get()]()
-    {
-        editMenu->hide();
-    });
+//    clearButton->clicked().connect([editMenu = editMenu.get()]()
+//    {
+//        editMenu->hide();
+//    });
 
     editButton = hBox->addWidget(std::make_unique<WPushButton>());
     editButton->setStyleClass("button");
@@ -168,24 +168,92 @@ void Toolbar::colorizeButtonSetup()
     colorizeButton->setStyleClass("colorize-button");
     colorizeButton->setText("Colorize");
     colorizeButton->disable();
-    colorizeButton->clicked().connect([content = content]()
+    colorizeButton->clicked().connect([this]()
     {
-        // File name must be changed every time new image is uploaded, because WPaintDevice caches images based on their URI
-        static int suffix = 0;
-        std::filesystem::remove("out/out" + std::to_string(suffix) + "png");
-        ++suffix;
-        std::string fileName = "out/out" + std::to_string(suffix) + ".png";
-        content->colorize(fileName);
+        content->colorize(generateDownloadFileName());
+        hideButton->enable();
     });
 }
 
-void Toolbar::showButtonSetup()
+void Toolbar::hideButtonSetup()
 {
-    showButton = hBox->addWidget(std::make_unique<WPushButton>());
-    showButton->setStyleClass("colorize-button");
-    showButton->setText("Hide");
-    showButton->clicked().connect([content = content, showButton = showButton]()
+    hideButton = hBox->addWidget(std::make_unique<WPushButton>());
+    hideButton->setStyleClass("colorize-button");
+    hideButton->setText("Hide");
+    hideButton->disable();
+    hideButton->clicked().connect([this]()
     {
+        hideButton->disable();
         content->hideResult();
     });
+}
+
+std::string Toolbar::generateUploadFileName()
+{
+    // File name must be changed every time new image is uploaded and ready to be displayed, because WPaintDevice caches images based on their URI
+    std::filesystem::create_directories(sessionId);
+    std::string fileName = sessionId + "/in";
+    std::filesystem::remove(fileName + std::to_string(uploadFileSuffix));
+    ++uploadFileSuffix;
+    return fileName + std::to_string(uploadFileSuffix);
+}
+
+std::string Toolbar::getUploadFileName() const
+{
+    return sessionId + "/in" + std::to_string(uploadFileSuffix);
+}
+
+std::string Toolbar::generateDownloadFileName()
+{
+    // File name must be changed every time new colorized image is created and ready to be displayed, because WPaintDevice caches images based on their URI
+    std::string fileName = sessionId + "/out";
+    std::filesystem::remove(fileName + std::to_string(downloadFileSuffix) + ".png");
+    ++uploadFileSuffix;
+    return fileName + std::to_string(downloadFileSuffix) + ".png";
+}
+
+std::string Toolbar::getDownloadFileName() const
+{
+    return sessionId + "/out" + std::to_string(downloadFileSuffix) + ".png";
+}
+
+Toolbar::Toolbar(Content* content) : content(content), sessionId(WApplication::instance()->sessionId())
+{
+    setStyleClass("toolbar");
+
+    hBoxSetup();
+    fileMenuSetup();
+    editMenuSetup();
+    colorPickerSetup();
+
+    auto dropdown = hBox->addWidget(std::make_unique<WContainerWidget>());
+    dropdown->setStyleClass("dropdown");
+
+    auto dropdownButton = dropdown->addWidget(std::make_unique<WPushButton>());
+    dropdownButton->setStyleClass("dropdown-button");
+    dropdownButton->setText("Options");
+    auto dropdownContent = dropdown->addWidget(std::make_unique<WContainerWidget>());
+    dropdownContent->setStyleClass("dropdown-content");
+    auto button1 = dropdownContent->addWidget(std::make_unique<WPushButton>());
+    button1->setStyleClass("dropdown-element");
+    button1->setText("Upload");
+    auto button2 = dropdownContent->addWidget(std::make_unique<WPushButton>());
+    button2->setText("Download");
+    button2->setStyleClass("dropdown-element");
+    button2->clicked().connect([&]()
+    {
+        dropdownContent->hide();
+    });
+
+
+    // spacing
+    hBox->addWidget(std::make_unique<WContainerWidget>(), 1);
+
+    colorizeButtonSetup();
+    hideButtonSetup();
+}
+
+Toolbar::~Toolbar()
+{
+    //std::filesystem::remove_all(sessionId);
 }

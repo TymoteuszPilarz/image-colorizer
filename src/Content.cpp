@@ -46,11 +46,22 @@ void Content::layoutSizeChanged(int width, int height)
 Content::Content()
 {
     setStyleClass("content");
+    setOverflow(Overflow::Visible);
     setLayoutSizeAware(true);
     setContentAlignment(AlignmentFlag::Center);
     WWebWidget::setMargin(0);
 
     imagePainter = addWidget(std::make_unique<ImagePainter>());
+}
+
+void Content::setImage(const std::string& fileName)
+{
+    auto image = std::make_unique<WPainter::Image>(fileName, fileName);
+
+    auto [imagePainterWidth, imagePainterHeight] = getScaledSize(image->width(), image->height(), width, height);
+    imagePainter->resize(imagePainterWidth, imagePainterHeight);
+
+    imagePainter->setImage(std::move(image));
 }
 
 void Content::setPenColor(const Wt::WColor& color)
@@ -88,63 +99,37 @@ void Content::setThreshold(int threshold)
     this->threshold = threshold;
 }
 
-void Content::colorize(const std::string& fileName)
+void Content::colorize(const std::string& outputFileName)
 {
-    resultFileName = fileName;
-
     if (!imagePainter->isImageSet())
     {
         return;
     }
 
+    auto imageFileName = imagePainter->getImageFileName();
+    auto scribblesFileName = std::filesystem::path(outputFileName).parent_path().string() + "/scribbles.png";
+
+    imagePainter->saveScribblesToPNG(scribblesFileName);
+
     try
     {
-        imagePainter->saveScribblesToPNG();
-
-        auto imageFile = imagePainter->getImageFileName();
-        auto scribblesFile = "out/scribbles.png";
-
-        auto image = cv::imread(imageFile);
-        auto scribbles = cv::imread(scribblesFile);
+        auto image = cv::imread(imageFileName);
+        auto scribbles = cv::imread(scribblesFileName);
         auto mask = co::getScribbleMask(image, scribbles, threshold);
         auto colorImage = co::colorize(image, scribbles, mask, gamma);
 
-        cv::imwrite(fileName, colorImage);
+        cv::imwrite(outputFileName, colorImage);
     }
     catch (const std::runtime_error& e)
     {
         log("error") << e.what();
     }
 
-    auto image = std::make_unique<WPainter::Image>(fileName, fileName);
+    auto image = std::make_unique<WPainter::Image>(outputFileName, outputFileName);
     imagePainter->showResult(std::move(image));
 }
 
 void Content::hideResult()
 {
     imagePainter->hideResult();
-}
-
-void Content::setImage(const std::string& fileName)
-{
-    auto image = std::make_unique<WPainter::Image>(fileName, fileName);
-
-    auto [imagePainterWidth, imagePainterHeight] = getScaledSize(image->width(), image->height(), width, height);
-    imagePainter->resize(imagePainterWidth, imagePainterHeight);
-
-    imagePainter->setImage(std::move(image));
-}
-
-void Content::downloadImage()
-{
-    if (resultFileName == "")
-    {
-        return;
-    }
-
-    auto imageFile = std::make_shared<Wt::WFileResource>("image/png", resultFileName);
-    imageFile->suggestFileName("out.png");
-    Wt::WLink link = Wt::WLink(imageFile);
-    link.setTarget(Wt::LinkTarget::NewWindow);
-    link.resolveUrl(WApplication::instance());
 }

@@ -199,7 +199,7 @@ void ImagePainter::clearCanvas()
     update();
 }
 
-void ImagePainter::saveScribblesToPNG()
+void ImagePainter::saveScribblesToPNG(const std::string& fileName)
 {
     if (!isImageSet())
     {
@@ -230,7 +230,7 @@ void ImagePainter::saveScribblesToPNG()
         }
     }
 
-    std::ofstream scribblesFile("out/scribbles.png", std::ios::out | std::ios::binary);
+    std::ofstream scribblesFile(fileName, std::ios::out | std::ios::binary);
     pngScribbles.write(scribblesFile);
 }
 

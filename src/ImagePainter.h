@@ -63,7 +63,8 @@ public:
     void redo();
     void clearCanvas();
 
-    void saveScribblesToPNG();
+    void saveScribblesToPNG(const std::string& fileName);
+
     void showResult(std::unique_ptr<Wt::WPainter::Image> image);
     void hideResult();
 };

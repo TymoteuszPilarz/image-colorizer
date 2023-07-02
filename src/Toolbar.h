@@ -39,17 +39,36 @@ private:
     Wt::WColorPicker* colorPicker;
 
     Wt::WPushButton* colorizeButton;
-    Wt::WPushButton* showButton;
+    Wt::WPushButton* hideButton;
+
+    std::string sessionId;
+    int uploadFileSuffix = 0;
+    int downloadFileSuffix = 0;
 
     void hBoxSetup();
+
     void fileMenuSetup();
+    void uploadButtonSetup();
+    void downloadButtonSetup();
+    void fileButtonSetup();
+
     void editMenuSetup();
     void colorPickerSetup();
+
     void colorizeButtonSetup();
-    void showButtonSetup();
+    void hideButtonSetup();
+
+
+
+    std::string generateUploadFileName();
+    std::string getUploadFileName() const;
+
+    std::string generateDownloadFileName();
+    std::string getDownloadFileName() const;
 
 public:
     Toolbar(Content* content);
+    ~Toolbar();
 };
 
 #endif //IMAGECOLORIZATION_TOOLBAR_H

@@ -23,6 +23,68 @@ a
     max-height: 54px;
     border-bottom: 1px solid black;
     border-top: 1px solid  black;
+    z-index: 999;
+    overflow: visible !important;
+}
+
+.dropdown
+{
+    position: relative;
+    display: inline-block;
+    overflow: visible !important;
+}
+
+.dropdown:hover .dropdown-content
+{
+    display: block;
+}
+
+.dropdown:hover .dropdown-button
+{
+    background-color: rgb(27, 30, 32);
+    color: rgb(217, 217, 217);
+}
+
+.dropdown-button
+{
+    background-color: rgb(40, 43, 48);
+    color: rgb(142, 143, 145);
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    text-align: center;
+    font-size: 17px;
+    transition-duration: 0.4s;
+}
+
+.dropdown-content
+{
+    display: none;
+    position: absolute;
+    background-color: rgb(59, 63, 67);
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.dropdown-element
+{
+    background-color: rgb(59, 63, 67);
+    color: rgb(142, 143, 145);
+    border: none;
+    width: 125px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 17px;
+    text-align: left;
+    cursor: default;
+}
+
+.dropdown-element:hover
+{
+    background-color: rgb(40, 43, 48);
+    color: rgb(217, 217, 217);
 }
 
 .content
@@ -96,6 +158,7 @@ a
     list-style: none;
 }
 
+
 .menu-item
 {
     background-color: rgb(59, 63, 67);
@@ -118,6 +181,7 @@ a
     width: 50px;
     align-self: center;
     margin-left: 15px;
+    margin-right: 15px;
     transition-duration: 0.4s;
 }
 
@@ -155,7 +219,7 @@ a
 
 .loader-background
 {
-    background: rgba(178, 178, 178, 0.87);
+    background: rgba(134, 134, 134, 0.87);
     height: 100%; width: 100%;
     top: 0; left: 0;
     z-index: 10000;

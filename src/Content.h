@@ -22,8 +22,6 @@ private:
     double gamma = 2.0;
     int threshold = 10;
 
-    std::string resultFileName;
-
     static std::tuple<int, int> getScaledSize(int sourceWidth, int sourceHeight, int destinationWidth, int destinationHeight);
 
 protected:
@@ -31,6 +29,8 @@ protected:
 
 public:
     Content();
+
+    void setImage(const std::string& fileName);
 
     void setPenColor(const Wt::WColor& color);
     void setPenWidth(int width);
@@ -40,11 +40,8 @@ public:
 
     void setGamma(double gamma);
     void setThreshold(int threshold);
-    void colorize(const std::string& fileName);
+    void colorize(const std::string& outputFileName);
     void hideResult();
-
-    void setImage(const std::string& fileName);
-    void downloadImage();
 };
 
 
