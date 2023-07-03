@@ -4,8 +4,8 @@ Web application designed to colorize grayscale images using algorithm described 
 
 Frontend and backend is written in pure C++20 with the help of Wt, OpenCV and Eigen3.
 
-Original algorithm is published [here](https://www.cs.huji.ac.il/w~yweiss/Colorization).
-Implementation is based on [this repository](https://github.com/lightalchemist/colorize-image).
+Original algorithm is published [here](https://www.cs.huji.ac.il/w~yweiss/Colorization).\
+Implementation used by this project is based on [this repository](https://github.com/lightalchemist/colorize-image).
 
 # Build and run
 
