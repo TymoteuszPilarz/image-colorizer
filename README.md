@@ -22,3 +22,6 @@ Image processing can take up to several dozen minutes depending on the image siz
 ```<max-request-size>size</max-request-size>``` - max request size, wchich can be altered in order to upload larger images (e.g. 4k resolution)
 
 # Demonstration
+<img width="1440" alt="image1" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/aff08814-c2ac-48e6-9f3e-294f26a2e3bf">
+<img width="1440" alt="image2" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/c36f0157-9116-4895-ba32-9b07ca7c2122">
+<img width="1440" alt="image3" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/f0b97d88-c557-4d0f-a219-f2de07e4daf9">
