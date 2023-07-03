@@ -2,7 +2,7 @@
 
 Web application designed to colorize grayscale images using algorithm described in A. Levin D. Lischinski and Y. Weiss Colorization using Optimization. ACM Transactions on Graphics, Aug 2004 for coloring grayscale images.
 
-Frontend and backend is written in pure C++20 with the help of Wt, OpenCV and Eigen3.
+Frontend and backend is written in pure C++20 with the help of CSS, Wt, OpenCV and Eigen3.
 
 Original algorithm is published [here](https://www.cs.huji.ac.il/w~yweiss/Colorization).\
 Implementation used by this project is based on [this repository](https://github.com/lightalchemist/colorize-image).
