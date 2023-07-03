@@ -179,8 +179,8 @@ std::unique_ptr<WPushButton> Toolbar::createColorizeButton()
         link.setTarget(LinkTarget::NewWindow);
 
         downloadButton->setLink(link);
-
         downloadButton->enable();
+
         hideButton->enable();
     });
 

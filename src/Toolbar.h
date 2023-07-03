@@ -30,35 +30,35 @@ private:
     int uploadFileSuffix = 0;
     int downloadFileSuffix = 0;
 
-    std::unique_ptr<Wt::WHBoxLayout> createLayout();
+    [[nodiscard]] std::unique_ptr<Wt::WHBoxLayout> createLayout();
 
-    std::unique_ptr<Wt::WContainerWidget> createFileMenu();
-    std::unique_ptr<Wt::WPushButton> createUploadButton();
-    std::unique_ptr<Wt::WPushButton> createDownloadButton();
+    [[nodiscard]] std::unique_ptr<Wt::WContainerWidget> createFileMenu();
+    [[nodiscard]] std::unique_ptr<Wt::WPushButton> createUploadButton();
+    [[nodiscard]] std::unique_ptr<Wt::WPushButton> createDownloadButton();
 
-    std::unique_ptr<Wt::WContainerWidget> createEditMenu();
-    std::unique_ptr<Wt::WPushButton> createUndoButton();
-    std::unique_ptr<Wt::WPushButton> createRedoButton();
-    std::unique_ptr<Wt::WPushButton> createClearButton();
+    [[nodiscard]] std::unique_ptr<Wt::WContainerWidget> createEditMenu();
+    [[nodiscard]] std::unique_ptr<Wt::WPushButton> createUndoButton();
+    [[nodiscard]] std::unique_ptr<Wt::WPushButton> createRedoButton();
+    [[nodiscard]] std::unique_ptr<Wt::WPushButton> createClearButton();
 
-    std::unique_ptr<Wt::WPushButton> createOptionsButton();
+    [[nodiscard]] std::unique_ptr<Wt::WPushButton> createOptionsButton();
 
-    std::unique_ptr<Wt::WColorPicker> createColorPicker();
+    [[nodiscard]] std::unique_ptr<Wt::WColorPicker> createColorPicker();
 
-    std::unique_ptr<Wt::WPushButton> createColorizeButton();
-    std::unique_ptr<Wt::WPushButton> createHideButton();
+    [[nodiscard]] std::unique_ptr<Wt::WPushButton> createColorizeButton();
+    [[nodiscard]] std::unique_ptr<Wt::WPushButton> createHideButton();
 
-    std::unique_ptr<Wt::WDialog> createOptionsDialog();
+    [[nodiscard]] std::unique_ptr<Wt::WDialog> createOptionsDialog();
 
     std::string generateUploadFileName();
-    std::string getUploadFileName() const;
+    [[nodiscard]] std::string getUploadFileName() const;
 
     std::string generateDownloadFileName();
-    std::string getDownloadFileName() const;
+    [[nodiscard]] std::string getDownloadFileName() const;
 
 public:
-    Toolbar(Content* content);
-    ~Toolbar();
+    explicit Toolbar(Content* content);
+    ~Toolbar() override;
 };
 
 #endif //IMAGECOLORIZER_TOOLBAR_H

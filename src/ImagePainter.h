@@ -53,14 +53,14 @@ public:
 
     void setImage(std::unique_ptr<Wt::WPainter::Image> image);
     bool isImageSet() const;
-    int getImageWidth() const;
-    int getImageHeight() const;
-    std::string getImageFileName() const;
+    [[nodiscard]] int getImageWidth() const;
+    [[nodiscard]] int getImageHeight() const;
+    [[nodiscard]] std::string getImageFileName() const;
 
     void setPenColor(const Wt::WColor& color);
     void setPenWidth(int width);
-    Wt::WColor getPenColor() const;
-    int getPenWidth() const;
+    [[nodiscard]] Wt::WColor getPenColor() const;
+    [[nodiscard]] int getPenWidth() const;
 
     void undo();
     void redo();
@@ -71,6 +71,5 @@ public:
     void showResult(std::unique_ptr<Wt::WPainter::Image> image);
     void hideResult();
 };
-
 
 #endif //IMAGECOLORIZER_IMAGEPAINTER_H

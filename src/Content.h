@@ -37,8 +37,8 @@ public:
 
     void setPenColor(const Wt::WColor& color);
     void setPenWidth(int width);
-    Wt::WColor getPenColor() const;
-    int getPenWidth() const;
+    [[nodiscard]] Wt::WColor getPenColor() const;
+    [[nodiscard]] int getPenWidth() const;
 
     void undo();
     void redo();
@@ -46,12 +46,11 @@ public:
 
     void setGamma(double gamma);
     void setThreshold(int threshold);
-    double getGamma() const;
-    int getThreshold() const;
+    [[nodiscard]] double getGamma() const;
+    [[nodiscard]] int getThreshold() const;
 
     void colorize(const std::string& outputFileName);
     void hideResult();
 };
-
 
 #endif //IMAGECOLORIZER_CONTENT_H

@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 23)
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
-add_executable(ImageColorization src/main.cpp src/Toolbar.cpp src/Toolbar.h src/Content.cpp src/Content.h src/ImagePainter.cpp src/ImagePainter.h src/Colorize.h src/Colorize.h src/ImageColorizer.h)
+add_executable(ImageColorization src/main.cpp src/Toolbar.cpp src/Toolbar.h src/Content.cpp src/Content.h src/ImagePainter.cpp src/ImagePainter.h src/Colorize.h src/Colorize.h src/ImageColorizer.h src/ImageColorizer.cpp)
 
 find_package(Wt REQUIRED)
 if(Wt_FOUND)
