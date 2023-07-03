@@ -7,7 +7,7 @@ Frontend and backend is written in pure C++20 with the help of Wt, OpenCV and Ei
 Original algorithm is published [here](https://www.cs.huji.ac.il/w~yweiss/Colorization).\
 Implementation used by this project is based on [this repository](https://github.com/lightalchemist/colorize-image).
 
-# Build and run
+# Building and running
 
 Appropriate CMake files are already provided. To build the project, Wt, OpenCV and Eigen3 are requred to be installed first. After successfull compilation, the following command can be used to run the program:
 
