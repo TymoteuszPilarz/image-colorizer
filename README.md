@@ -1,6 +1,6 @@
 # ImageColorizer
 
-Web application for colorizig grayscale images using algorithm described in A. Levin D. Lischinski and Y. Weiss Colorization using Optimization. ACM Transactions on Graphics, Aug 2004 for coloring grayscale images.
+Web application designed to colorize grayscale images using algorithm described in A. Levin D. Lischinski and Y. Weiss Colorization using Optimization. ACM Transactions on Graphics, Aug 2004 for coloring grayscale images.
 
 Frontend and backend is built in pure C++20 with the help of Wt, OpenCV and Eigen3.
 
