@@ -13,7 +13,6 @@
 #include <Wt/WFileUpload.h>
 #include <Wt/WFileResource.h>
 #include <Wt/WApplication.h>
-#include <Wt/WOverlayLoadingIndicator.h>
 
 #include "Toolbar.h"
 
@@ -66,6 +65,7 @@ std::unique_ptr<WPushButton> Toolbar::createUploadButton()
 
         content->setImage(fileName);
         colorizeButton->enable();
+        hideButton->disable();
     });
     fileUpload->fileTooLarge().connect([]()
     {
@@ -80,14 +80,6 @@ std::unique_ptr<Wt::WPushButton> Toolbar::createDownloadButton()
     auto button = std::make_unique<WPushButton>("Download");
     button->setStyleClass("dropdown-element");
     button->disable();
-
-    auto imageFile = std::make_shared<Wt::WFileResource>("image/png", getDownloadFileName());
-    imageFile->suggestFileName("color_image.png");
-
-    Wt::WLink link = Wt::WLink(imageFile);
-    link.setTarget(Wt::LinkTarget::NewWindow);
-
-    button->setLink(link);
 
     downloadButton = button.get();
 
@@ -155,32 +147,44 @@ std::unique_ptr<Wt::WPushButton> Toolbar::createColorizeButton()
     auto button = std::make_unique<WPushButton>("Colorize");
     button->setStyleClass("colorize-button");
     button->disable();
+
+    colorizeButton = button.get();
+
     button->clicked().connect([this]()
     {
         colorizeButton->disable();
+
         content->colorize(generateDownloadFileName());
+
+        auto imageFile = std::make_shared<Wt::WFileResource>("image/png", getDownloadFileName());
+        imageFile->suggestFileName("color_image.png");
+
+        Wt::WLink link = Wt::WLink(imageFile);
+        link.setTarget(Wt::LinkTarget::NewWindow);
+
+        downloadButton->setLink(link);
+
         downloadButton->enable();
         hideButton->enable();
     });
-
-    colorizeButton = button.get();
 
     return button;
 }
 
 std::unique_ptr<Wt::WPushButton> Toolbar::createHideButton()
 {
-    auto button = std::make_unique<WPushButton>("Hide");
+    auto button = std::make_unique<WPushButton>("Hide result");
     button->setStyleClass("colorize-button");
     button->disable();
-    button->clicked().connect([this, button = button.get()]()
-    {
-        content->hideResult();
-        colorizeButton->enable();
-        button->disable();
-    });
 
     hideButton = button.get();
+
+    button->clicked().connect([this]()
+    {
+        hideButton->disable();
+        content->hideResult();
+        colorizeButton->enable();
+    });
 
     return button;
 }
@@ -205,7 +209,7 @@ std::string Toolbar::generateDownloadFileName()
     // File name must be changed every time new colorized image is created and ready to be displayed, because WPaintDevice caches images based on their URI
     std::string fileName = sessionId + "/out";
     std::filesystem::remove(fileName + std::to_string(downloadFileSuffix) + ".png");
-    ++uploadFileSuffix;
+    ++downloadFileSuffix;
     return fileName + std::to_string(downloadFileSuffix) + ".png";
 }
 

@@ -28,6 +28,7 @@ ImageColorizer::ImageColorizer(const Wt::WEnvironment& env) : Wt::WApplication(e
 
     auto loadingIndicator = std::make_unique<Wt::WOverlayLoadingIndicator>("loader", "loader-background");
     loadingIndicator->setMessage("");
+    loadingIndicator->setId("loadingIndicator");
     setLoadingIndicator(std::move(loadingIndicator));
 
     auto container = root()->addWidget(std::make_unique<WContainerWidget>());
@@ -43,11 +44,6 @@ ImageColorizer::ImageColorizer(const Wt::WEnvironment& env) : Wt::WApplication(e
     vBox->addWidget(std::make_unique<Toolbar>(contentPtr.get()));
 
     vBox->addWidget(std::move(contentPtr));
-
-    doJavaScript("document.body.bind(\"contextmenu\", function()"
-                 "{\n"
-                 "  return false;\n"
-                 "});\n");
 }
 
 int main(int argc, char **argv)

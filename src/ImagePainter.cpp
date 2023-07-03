@@ -42,7 +42,6 @@ void ImagePainter::mouseDrag(const Wt::WMouseEvent& e)
         return;
     }
 
-
     Wt::Coordinates c = e.widget();
 
     buffer.back().painterPath.lineTo(c.x, c.y);
@@ -173,28 +172,37 @@ void ImagePainter::setPenWidth(int width)
 
 void ImagePainter::undo()
 {
-    if (!buffer.empty() && action != Action::result)
+    if (buffer.empty() || action == Action::result)
     {
-        redoBuffer.push_back(buffer.back());
-        buffer.pop_back();
-        action = Action::repaint;
-        update();
+        return;
     }
+
+    redoBuffer.push_back(buffer.back());
+    buffer.pop_back();
+    action = Action::repaint;
+    update();
 }
 
 void ImagePainter::redo()
 {
-    if (!redoBuffer.empty() && action != Action::result)
+    if (redoBuffer.empty() || action == Action::result)
     {
-        buffer.push_back(redoBuffer.back());
-        redoBuffer.pop_back();
-        action = Action::repaint;
-        update();
+        return;
     }
+
+    buffer.push_back(redoBuffer.back());
+    redoBuffer.pop_back();
+    action = Action::repaint;
+    update();
 }
 
 void ImagePainter::clearCanvas()
 {
+    if (action == Action::result)
+    {
+        return;
+    }
+
     buffer.clear();
     redoBuffer.clear();
     action = Action::repaint;
