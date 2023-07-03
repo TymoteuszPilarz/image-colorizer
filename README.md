@@ -17,8 +17,8 @@ where <project_directory> needs to be replaced with the project path.
 
 Image processing can take up to several dozen minutes depending on the image size and used setting, so it may be necessary to modify wt_config.xml. Global configuration is typically located at /etc/wt/ (check Wt documentation for more details).
 
-'''<timeout>seconds</timeout>''' - this property can be increased to prevent session from terminating while the image is still processesd.
+```<timeout>seconds</timeout>``` - this property can be increased to prevent session from terminating while the image is still processesd.
 
-'''<max-request-size>size</max-request-size>''' - max request size, wchich can be altered in order to upload larger images (e.g. 4k resolution)
+```<max-request-size>size</max-request-size>``` - max request size, wchich can be altered in order to upload larger images (e.g. 4k resolution)
 
 # Demonstration
