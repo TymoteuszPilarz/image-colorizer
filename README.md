@@ -6,7 +6,7 @@ Frontend and backend is written in pure C++20 with the help of Wt, OpenCV and Ei
 
 Original algorithm is published [here](https://www.cs.huji.ac.il/w~yweiss/Colorization)
 
-Implementation is based on [this repository]([https://link-url-here.org](https://github.com/lightalchemist/colorize-image)
+Implementation is based on [this repository](https://link-url-here.org](https://github.com/lightalchemist/colorize-image)
 
 # Build and run
 
