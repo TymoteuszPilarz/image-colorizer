@@ -2,15 +2,16 @@
 // Created by Tymoteusz Pilarz on 24/06/2023.
 //
 
-#ifndef IMAGECOLORIZATION_IMAGEPAINTER_H
-#define IMAGECOLORIZATION_IMAGEPAINTER_H
+#ifndef IMAGECOLORIZER_IMAGEPAINTER_H
+#define IMAGECOLORIZER_IMAGEPAINTER_H
 
 #include <memory>
 #include <vector>
+#include <string>
 
 #include <Wt/WBrush.h>
 #include <Wt/WColor.h>
-#include <Wt/WContainerWidget.h>
+#include <Wt/WPen.h>
 #include <Wt/WPaintDevice.h>
 #include <Wt/WPaintedWidget.h>
 #include <Wt/WPainter.h>
@@ -58,6 +59,8 @@ public:
 
     void setPenColor(const Wt::WColor& color);
     void setPenWidth(int width);
+    Wt::WColor getPenColor() const;
+    int getPenWidth() const;
 
     void undo();
     void redo();
@@ -70,4 +73,4 @@ public:
 };
 
 
-#endif //IMAGECOLORIZATION_IMAGEPAINTER_H
+#endif //IMAGECOLORIZER_IMAGEPAINTER_H

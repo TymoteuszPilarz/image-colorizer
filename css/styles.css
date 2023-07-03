@@ -23,6 +23,18 @@ a
     cursor: default;
 }
 
+span
+{
+    color: rgb(142, 143, 145);
+    font-size: 17px;
+    text-align: left;
+}
+
+h4
+{
+    margin: 20px;
+}
+
 .background
 {
     background-color: rgb(40, 43, 48);
@@ -111,10 +123,73 @@ a
     color: rgba(217, 217, 217, 0.32);
 }
 
-.content
+.options-button
 {
     background-color: rgb(40, 43, 48);
-    margin: 0;
+    color: rgb(142, 143, 145);
+    height: 100%;
+    padding: 0 15px;
+    border: none;
+    text-align: center;
+    font-size: 17px;
+    transition-duration: 0.4s;
+}
+
+.options-button:hover
+{
+    background-color: rgb(27, 30, 32);
+    color: rgb(217, 217, 217);
+}
+
+.dialog
+{
+    background-color: rgb(59, 63, 67);
+    color: rgb(142, 143, 145);
+    border: 1px solid black;
+    font-size: 30px;
+    text-align: center;
+    cursor: default;
+}
+
+.titlebar
+{
+    height: 60px;
+}
+
+.dialog-button
+{
+    background-color: rgb(40, 43, 48);
+    color: rgb(142, 143, 145);
+    border: none;
+    width: 110px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 17px;
+    text-align: center;
+    cursor: default;
+    transition-duration: 0.4s;
+}
+
+.dialog-button:enabled:hover
+{
+    background-color: rgb(27, 30, 32);
+    color: rgb(217, 217, 217);
+}
+
+.dialog-button:disabled
+{
+    background-color: rgba(40, 43, 48, 0.29);
+    color: rgba(217, 217, 217, 0.32);
+}
+
+.dialog-input
+{
+    width: 50px;
+    background-color: rgb(59, 63, 67);
+    border-style: none;
+    border-width: 1px;
+    color: rgb(142, 143, 145);
+    font-size: 17px;
 }
 
 .colorize-button
@@ -155,6 +230,12 @@ a
 .color-picker:hover
 {
     transform: scale(1.2);
+}
+
+.content
+{
+    background-color: rgb(40, 43, 48);
+    margin: 0;
 }
 
 .loader

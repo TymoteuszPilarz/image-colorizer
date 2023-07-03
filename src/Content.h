@@ -2,12 +2,15 @@
 // Created by Tymoteusz Pilarz on 10/06/2023.
 //
 
-#ifndef IMAGECOLORIZATION_CONTENT_H
-#define IMAGECOLORIZATION_CONTENT_H
+#ifndef IMAGECOLORIZER_CONTENT_H
+#define IMAGECOLORIZER_CONTENT_H
 
 #include <tuple>
+#include <vector>
+#include <string>
 
 #include <Wt/WContainerWidget.h>
+#include <Wt/WColor.h>
 
 #include "ImagePainter.h"
 
@@ -34,15 +37,21 @@ public:
 
     void setPenColor(const Wt::WColor& color);
     void setPenWidth(int width);
+    Wt::WColor getPenColor() const;
+    int getPenWidth() const;
+
     void undo();
     void redo();
     void clearCanvas();
 
     void setGamma(double gamma);
     void setThreshold(int threshold);
+    double getGamma() const;
+    int getThreshold() const;
+
     void colorize(const std::string& outputFileName);
     void hideResult();
 };
 
 
-#endif //IMAGECOLORIZATION_CONTENT_H
+#endif //IMAGECOLORIZER_CONTENT_H

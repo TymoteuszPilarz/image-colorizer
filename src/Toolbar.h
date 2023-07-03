@@ -2,21 +2,18 @@
 // Created by Tymoteusz Pilarz on 10/06/2023.
 //
 
-#ifndef IMAGECOLORIZATION_TOOLBAR_H
-#define IMAGECOLORIZATION_TOOLBAR_H
+#ifndef IMAGECOLORIZER_TOOLBAR_H
+#define IMAGECOLORIZER_TOOLBAR_H
+
+#include <memory>
+#include <string>
 
 #include <Wt/WContainerWidget.h>
 #include <Wt/WHBoxLayout.h>
-#include <Wt/WBreak.h>
 #include <Wt/WContainerWidget.h>
-#include <Wt/WMenuItem.h>
-#include <Wt/WMessageBox.h>
-#include <Wt/WPopupMenu.h>
 #include <Wt/WPushButton.h>
-#include <Wt/WText.h>
-#include <Wt/WPoint.h>
 #include <Wt/WColorPicker.h>
-#include <Wt/WFileUpload.h>
+#include <Wt/WDialog.h>
 
 #include "Content.h"
 
@@ -44,10 +41,14 @@ private:
     std::unique_ptr<Wt::WPushButton> createRedoButton();
     std::unique_ptr<Wt::WPushButton> createClearButton();
 
+    std::unique_ptr<Wt::WPushButton> createOptionsButton();
+
     std::unique_ptr<Wt::WColorPicker> createColorPicker();
 
     std::unique_ptr<Wt::WPushButton> createColorizeButton();
     std::unique_ptr<Wt::WPushButton> createHideButton();
+
+    std::unique_ptr<Wt::WDialog> createOptionsDialog();
 
     std::string generateUploadFileName();
     std::string getUploadFileName() const;
@@ -60,4 +61,4 @@ public:
     ~Toolbar();
 };
 
-#endif //IMAGECOLORIZATION_TOOLBAR_H
+#endif //IMAGECOLORIZER_TOOLBAR_H

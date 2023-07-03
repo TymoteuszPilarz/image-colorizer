@@ -5,44 +5,36 @@
 #include <fstream>
 
 #include <Wt/WRectF.h>
-#include <Wt/WCssDecorationStyle.h>
-#include <Wt/WColor.h>
-#include <Wt/WContainerWidget.h>
 #include <Wt/WEvent.h>
 #include <Wt/WPainter.h>
 #include <Wt/WPainterPath.h>
-#include <Wt/WPen.h>
 #include <Wt/WPointF.h>
-#include <Wt/WPushButton.h>
-#include <Wt/WTemplate.h>
-#include <Wt/WText.h>
-#include <Wt/WToolBar.h>
 #include <Wt/WRasterImage.h>
 
 #include "ImagePainter.h"
 
 using namespace Wt;
 
-void ImagePainter::mouseDown(const Wt::WMouseEvent& e)
+void ImagePainter::mouseDown(const WMouseEvent& e)
 {
     if (!isImageSet() || action == Action::result)
     {
         return;
     }
 
-    Wt::Coordinates c = e.widget();
-    buffer.push_back({pen, WPainterPath(Wt::WPointF(c.x, c.y)), static_cast<int>(WWebWidget::width().toPixels()), static_cast<int>(WWebWidget::height().toPixels())});
-    painterPath = WPainterPath(Wt::WPointF(c.x, c.y));
+    Coordinates c = e.widget();
+    buffer.push_back({pen, WPainterPath(WPointF(c.x, c.y)), static_cast<int>(WWebWidget::width().toPixels()), static_cast<int>(WWebWidget::height().toPixels())});
+    painterPath = WPainterPath(WPointF(c.x, c.y));
 }
 
-void ImagePainter::mouseDrag(const Wt::WMouseEvent& e)
+void ImagePainter::mouseDrag(const WMouseEvent& e)
 {
     if (!isImageSet() || action == Action::result || buffer.empty())
     {
         return;
     }
 
-    Wt::Coordinates c = e.widget();
+    Coordinates c = e.widget();
 
     buffer.back().painterPath.lineTo(c.x, c.y);
     redoBuffer.clear();
@@ -100,11 +92,11 @@ ImagePainter::ImagePainter()
 
     pen.setWidth(3);
     pen.setColor(StandardColor::Red);
-    pen.setCapStyle(Wt::PenCapStyle::Round);
-    pen.setJoinStyle(Wt::PenJoinStyle::Miter);
+    pen.setCapStyle(PenCapStyle::Round);
+    pen.setJoinStyle(PenJoinStyle::Miter);
 }
 
-void ImagePainter::resize(const Wt::WLength& width, const Wt::WLength& height)
+void ImagePainter::resize(const WLength& width, const WLength& height)
 {
     if (width != WWebWidget::width() || height != WWebWidget::height())
     {
@@ -168,6 +160,16 @@ void ImagePainter::setPenColor(const WColor& color)
 void ImagePainter::setPenWidth(int width)
 {
     pen.setWidth(width);
+}
+
+WColor ImagePainter::getPenColor() const
+{
+    return pen.color();
+}
+
+int ImagePainter::getPenWidth() const
+{
+    return static_cast<int>(pen.width().toPixels());
 }
 
 void ImagePainter::undo()
@@ -244,7 +246,7 @@ void ImagePainter::saveScribblesToPNG(const std::string& fileName)
     pngScribbles.write(scribblesFile);
 }
 
-void ImagePainter::showResult(std::unique_ptr<Wt::WPainter::Image> image)
+void ImagePainter::showResult(std::unique_ptr<WPainter::Image> image)
 {
     resultImage = std::move(image);
     action = Action::result;

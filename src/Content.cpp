@@ -5,12 +5,6 @@
 #include <memory>
 #include <filesystem>
 
-#include <Wt/WVBoxLayout.h>
-#include <Wt/WPushButton.h>
-#include <Wt/WFileResource.h>
-#include <Wt/WApplication.h>
-#include <Wt/WLink.h>
-
 #include <opencv2/highgui.hpp>
 
 #include "Content.h"
@@ -64,7 +58,7 @@ void Content::setImage(const std::string& fileName)
     imagePainter->setImage(std::move(image));
 }
 
-void Content::setPenColor(const Wt::WColor& color)
+void Content::setPenColor(const WColor& color)
 {
     imagePainter->setPenColor(color);
 }
@@ -72,6 +66,16 @@ void Content::setPenColor(const Wt::WColor& color)
 void Content::setPenWidth(int width)
 {
     imagePainter->setPenWidth(width);
+}
+
+WColor Content::getPenColor() const
+{
+    return imagePainter->getPenColor();
+}
+
+int Content::getPenWidth() const
+{
+    return imagePainter->getPenWidth();
 }
 
 void Content::undo()
@@ -97,6 +101,16 @@ void Content::setGamma(double gamma)
 void Content::setThreshold(int threshold)
 {
     this->threshold = threshold;
+}
+
+double Content::getGamma() const
+{
+    return gamma;
+}
+
+int Content::getThreshold() const
+{
+    return threshold;
 }
 
 void Content::colorize(const std::string& outputFileName)
