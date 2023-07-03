@@ -16,6 +16,7 @@
 #include <Wt/WText.h>
 #include <Wt/WPoint.h>
 #include <Wt/WColorPicker.h>
+#include <Wt/WFileUpload.h>
 
 #include "Content.h"
 
@@ -24,20 +25,7 @@ class Toolbar : public Wt::WContainerWidget
 private:
     Content* content;
 
-    Wt::WHBoxLayout* hBox;
-
-    std::unique_ptr<Wt::WPopupMenu> fileMenu;
-    Wt::WPushButton* fileButton;
-    Wt::WMenuItem* uploadButton;
-    Wt::WMenuItem* downloadButton;
-
-    std::unique_ptr<Wt::WPopupMenu> editMenu;
-    Wt::WPushButton* editButton;
-    Wt::WMenuItem* undoButton;
-    Wt::WMenuItem* redoButton;
-    Wt::WMenuItem* clearButton;
-    Wt::WColorPicker* colorPicker;
-
+    Wt::WPushButton* downloadButton;
     Wt::WPushButton* colorizeButton;
     Wt::WPushButton* hideButton;
 
@@ -45,20 +33,21 @@ private:
     int uploadFileSuffix = 0;
     int downloadFileSuffix = 0;
 
-    void hBoxSetup();
+    std::unique_ptr<Wt::WHBoxLayout> createLayout();
 
-    void fileMenuSetup();
-    void uploadButtonSetup();
-    void downloadButtonSetup();
-    void fileButtonSetup();
+    std::unique_ptr<Wt::WContainerWidget> createFileMenu();
+    std::unique_ptr<Wt::WPushButton> createUploadButton();
+    std::unique_ptr<Wt::WPushButton> createDownloadButton();
 
-    void editMenuSetup();
-    void colorPickerSetup();
+    std::unique_ptr<Wt::WContainerWidget> createEditMenu();
+    std::unique_ptr<Wt::WPushButton> createUndoButton();
+    std::unique_ptr<Wt::WPushButton> createRedoButton();
+    std::unique_ptr<Wt::WPushButton> createClearButton();
 
-    void colorizeButtonSetup();
-    void hideButtonSetup();
+    std::unique_ptr<Wt::WColorPicker> createColorPicker();
 
-
+    std::unique_ptr<Wt::WPushButton> createColorizeButton();
+    std::unique_ptr<Wt::WPushButton> createHideButton();
 
     std::string generateUploadFileName();
     std::string getUploadFileName() const;

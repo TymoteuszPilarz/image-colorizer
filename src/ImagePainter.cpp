@@ -25,7 +25,7 @@ using namespace Wt;
 
 void ImagePainter::mouseDown(const Wt::WMouseEvent& e)
 {
-    if (!isImageSet() && action != Action::result)
+    if (!isImageSet() || action == Action::result)
     {
         return;
     }
@@ -37,12 +37,14 @@ void ImagePainter::mouseDown(const Wt::WMouseEvent& e)
 
 void ImagePainter::mouseDrag(const Wt::WMouseEvent& e)
 {
-    if (!isImageSet() && action != Action::result)
+    if (!isImageSet() || action == Action::result || buffer.empty())
     {
         return;
     }
 
+
     Wt::Coordinates c = e.widget();
+
     buffer.back().painterPath.lineTo(c.x, c.y);
     redoBuffer.clear();
     painterPath.lineTo(c.x, c.y);

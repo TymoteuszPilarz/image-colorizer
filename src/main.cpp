@@ -37,12 +37,17 @@ ImageColorizer::ImageColorizer(const Wt::WEnvironment& env) : Wt::WApplication(e
     vBox->setContentsMargins(0, 0, 0, 0);
     vBox->setSpacing(0);
 
-    // Content needs to be created earlier, because it is used as a parameter in Toolbar contructor, but appears in vbox after the Toolbar
+    // Content needs to be created earlier, because it is used as a parameter in Toolbar constructor, but appears in vbox after the Toolbar
     auto contentPtr = std::make_unique<Content>();
 
-    auto toolbar = vBox->addWidget(std::make_unique<Toolbar>(contentPtr.get()));
+    vBox->addWidget(std::make_unique<Toolbar>(contentPtr.get()));
 
-    auto content = vBox->addWidget(std::move(contentPtr));
+    vBox->addWidget(std::move(contentPtr));
+
+    doJavaScript("document.body.bind(\"contextmenu\", function()"
+                 "{\n"
+                 "  return false;\n"
+                 "});\n");
 }
 
 int main(int argc, char **argv)

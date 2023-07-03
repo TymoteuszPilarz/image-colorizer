@@ -9,49 +9,49 @@
 #include <Wt/WHBoxLayout.h>
 #include <Wt/WBreak.h>
 #include <Wt/WContainerWidget.h>
-#include <Wt/WMenuItem.h>
-#include <Wt/WMessageBox.h>
-#include <Wt/WPopupMenu.h>
 #include <Wt/WPushButton.h>
-#include <Wt/WText.h>
-#include <Wt/WPoint.h>
 #include <Wt/WFileUpload.h>
 #include <Wt/WFileResource.h>
 #include <Wt/WApplication.h>
+#include <Wt/WOverlayLoadingIndicator.h>
 
 #include "Toolbar.h"
 
 using namespace Wt;
 
-void Toolbar::hBoxSetup()
+std::unique_ptr<Wt::WHBoxLayout> Toolbar::createLayout()
 {
-    hBox = setLayout(std::make_unique<WHBoxLayout>());
-    hBox->setContentsMargins(0, 0, 10, 0);
-    hBox->setSpacing(0);
+    auto layout = std::make_unique<WHBoxLayout>();
+    layout->setContentsMargins(0, 0, 10, 0);
+    layout->setSpacing(0);
+    return layout;
 }
 
-void Toolbar::fileMenuSetup()
+std::unique_ptr<Wt::WContainerWidget> Toolbar::createFileMenu()
 {
-    fileMenu = std::make_unique<WPopupMenu>();
-    fileMenu->setStyleClass("menu");
+    auto dropdown = std::make_unique<WContainerWidget>();
+    dropdown->setStyleClass("dropdown");
 
-    uploadButtonSetup();
-    downloadButtonSetup();
-    fileButtonSetup();
+    auto dropdownButton = dropdown->addWidget(std::make_unique<WPushButton>("File"));
+    dropdownButton->setStyleClass("dropdown-button");
+
+    auto dropdownContent = dropdown->addWidget(std::make_unique<WContainerWidget>());
+    dropdownContent->setStyleClass("dropdown-content");
+    dropdownContent->addWidget(createUploadButton());
+    dropdownContent->addWidget(createDownloadButton());
+
+    return dropdown;
 }
 
-void Toolbar::uploadButtonSetup()
+std::unique_ptr<WPushButton> Toolbar::createUploadButton()
 {
-    uploadButton = fileMenu->addItem("Upload");
-    uploadButton->setStyleClass("menu-item");
-//    uploadButton->clicked().connect([fileMenu = fileMenu.get()]()
-//    {
-//        fileMenu->hide();
-//    });
+    auto button = std::make_unique<WPushButton>("Upload");
+    button->setStyleClass("dropdown-element");
 
-    auto fileUpload = uploadButton->addWidget(std::make_unique<Wt::WFileUpload>());
-    fileUpload->setDisplayWidget(uploadButton);
-    fileUpload->hide();
+    auto fileUpload = static_cast<WHBoxLayout*>(layout())->addWidget(std::make_unique<Wt::WFileUpload>());
+    fileUpload->setDisplayWidget(button.get());
+    fileUpload->setWidth(0);
+    fileUpload->setHeight(0);
     fileUpload->setMultiple(false);
     fileUpload->setFilters("image/png, image/jpeg");
     fileUpload->changed().connect(fileUpload, &WFileUpload::upload);
@@ -67,16 +67,19 @@ void Toolbar::uploadButtonSetup()
         content->setImage(fileName);
         colorizeButton->enable();
     });
-    fileUpload->fileTooLarge().connect([content = content, fileUpload = fileUpload]()
+    fileUpload->fileTooLarge().connect([]()
     {
         log("error") << "File too large";
     });
+
+    return button;
 }
 
-void Toolbar::downloadButtonSetup()
+std::unique_ptr<Wt::WPushButton> Toolbar::createDownloadButton()
 {
-    downloadButton = fileMenu->addItem("Download");
-    downloadButton->setStyleClass("menu-item");
+    auto button = std::make_unique<WPushButton>("Download");
+    button->setStyleClass("dropdown-element");
+    button->disable();
 
     auto imageFile = std::make_shared<Wt::WFileResource>("image/png", getDownloadFileName());
     imageFile->suggestFileName("color_image.png");
@@ -84,108 +87,102 @@ void Toolbar::downloadButtonSetup()
     Wt::WLink link = Wt::WLink(imageFile);
     link.setTarget(Wt::LinkTarget::NewWindow);
 
-    downloadButton->setLink(link);
-//    downloadButton->clicked().connect([fileMenu = fileMenu.get()]()
-//    {
-//        fileMenu->hide();
-//    });
+    button->setLink(link);
+
+    downloadButton = button.get();
+
+    return button;
 }
 
-void Toolbar::fileButtonSetup()
+std::unique_ptr<Wt::WContainerWidget> Toolbar::createEditMenu()
 {
-    fileButton = hBox->addWidget(std::make_unique<WPushButton>());
-    fileButton->setStyleClass("button");
-    fileButton->setText("File");
-    fileButton->setMenu(std::move(fileMenu));
+    auto dropdown = std::make_unique<WContainerWidget>();
+    dropdown->setStyleClass("dropdown");
 
-    fileButton->clicked().connect([fileButton = fileButton, fileMenu = fileMenu.get()]()
-    {
-        fileButton->setFocus(true);
-    });
+    auto dropdownButton = dropdown->addWidget(std::make_unique<WPushButton>("Edit"));
+    dropdownButton->setStyleClass("dropdown-button");
 
-    fileButton->menu()->aboutToHide().connect([fileButton = fileButton]()
-    {
-        fileButton->setFocus(false);
-    });
+    auto dropdownContent = dropdown->addWidget(std::make_unique<WContainerWidget>());
+    dropdownContent->setStyleClass("dropdown-content");
+    dropdownContent->addWidget(createUndoButton());
+    dropdownContent->addWidget(createRedoButton());
+    dropdownContent->addWidget(createClearButton());
+
+    return dropdown;
 }
 
-void Toolbar::editMenuSetup()
+std::unique_ptr<Wt::WPushButton> Toolbar::createUndoButton()
 {
-    editMenu = std::make_unique<WPopupMenu>();
-    editMenu->setStyleClass("menu");
+    auto button = std::make_unique<WPushButton>("Undo");
+    button->setStyleClass("dropdown-element");
+    button->clicked().connect(content, &Content::undo);
 
-    undoButton = editMenu->addItem("Undo");
-    undoButton->setStyleClass("menu-item");
-    undoButton->clicked().connect(content, &Content::undo);
-//    undoButton->clicked().connect([editMenu = editMenu.get()]()
-//    {
-//        editMenu->hide();
-//    });
-
-    redoButton = editMenu->addItem("Redo");
-    redoButton->setStyleClass("menu-item");
-    redoButton->clicked().connect(content, &Content::redo);
-//    redoButton->clicked().connect([editMenu = editMenu.get()]()
-//    {
-//        editMenu->hide();
-//    });
-
-    clearButton = editMenu->addItem("Clear");
-    clearButton->setStyleClass("menu-item");
-    clearButton->clicked().connect(content, &Content::clearCanvas);
-//    clearButton->clicked().connect([editMenu = editMenu.get()]()
-//    {
-//        editMenu->hide();
-//    });
-
-    editButton = hBox->addWidget(std::make_unique<WPushButton>());
-    editButton->setStyleClass("button");
-    editButton->setText("Edit");
-    editButton->setMenu(std::move(editMenu));
-    editButton->clicked().connect([editButton = editButton, editMenu = editMenu.get()]()
-    {
-        editButton->setFocus(true);
-    });
-    editButton->menu()->aboutToHide().connect([editButton = editButton]()
-    {
-        editButton->setFocus(false);
-    });
+    return button;
 }
 
-void Toolbar::colorPickerSetup()
+std::unique_ptr<Wt::WPushButton> Toolbar::createRedoButton()
 {
-    colorPicker = hBox->addWidget(std::make_unique<WColorPicker>(StandardColor::Red));
+    auto button = std::make_unique<WPushButton>("Redo");
+    button->setStyleClass("dropdown-element");
+    button->clicked().connect(content, &Content::redo);
+
+    return button;
+}
+
+std::unique_ptr<Wt::WPushButton> Toolbar::createClearButton()
+{
+    auto button = std::make_unique<WPushButton>("Clear");
+    button->setStyleClass("dropdown-element");
+    button->clicked().connect(content, &Content::clearCanvas);
+
+    return button;
+}
+
+std::unique_ptr<Wt::WColorPicker> Toolbar::createColorPicker()
+{
+    auto colorPicker = std::make_unique<WColorPicker>(StandardColor::Red);
     colorPicker->setStyleClass("color-picker");
-    colorPicker->colorInput().connect([content = content, colorPicker = colorPicker]()
+    colorPicker->colorInput().connect([content = content, colorPicker = colorPicker.get()]()
     {
         content->setPenColor(colorPicker->color());
     });
+
+    return colorPicker;
 }
 
-void Toolbar::colorizeButtonSetup()
+std::unique_ptr<Wt::WPushButton> Toolbar::createColorizeButton()
 {
-    colorizeButton = hBox->addWidget(std::make_unique<WPushButton>());
-    colorizeButton->setStyleClass("colorize-button");
-    colorizeButton->setText("Colorize");
-    colorizeButton->disable();
-    colorizeButton->clicked().connect([this]()
+    auto button = std::make_unique<WPushButton>("Colorize");
+    button->setStyleClass("colorize-button");
+    button->disable();
+    button->clicked().connect([this]()
     {
+        colorizeButton->disable();
         content->colorize(generateDownloadFileName());
+        downloadButton->enable();
         hideButton->enable();
     });
+
+    colorizeButton = button.get();
+
+    return button;
 }
 
-void Toolbar::hideButtonSetup()
+std::unique_ptr<Wt::WPushButton> Toolbar::createHideButton()
 {
-    hideButton = hBox->addWidget(std::make_unique<WPushButton>());
-    hideButton->setStyleClass("colorize-button");
-    hideButton->setText("Hide");
-    hideButton->disable();
-    hideButton->clicked().connect([this]()
+    auto button = std::make_unique<WPushButton>("Hide");
+    button->setStyleClass("colorize-button");
+    button->disable();
+    button->clicked().connect([this, button = button.get()]()
     {
-        hideButton->disable();
         content->hideResult();
+        colorizeButton->enable();
+        button->disable();
     });
+
+    hideButton = button.get();
+
+    return button;
 }
 
 std::string Toolbar::generateUploadFileName()
@@ -221,39 +218,19 @@ Toolbar::Toolbar(Content* content) : content(content), sessionId(WApplication::i
 {
     setStyleClass("toolbar");
 
-    hBoxSetup();
-    fileMenuSetup();
-    editMenuSetup();
-    colorPickerSetup();
-
-    auto dropdown = hBox->addWidget(std::make_unique<WContainerWidget>());
-    dropdown->setStyleClass("dropdown");
-
-    auto dropdownButton = dropdown->addWidget(std::make_unique<WPushButton>());
-    dropdownButton->setStyleClass("dropdown-button");
-    dropdownButton->setText("Options");
-    auto dropdownContent = dropdown->addWidget(std::make_unique<WContainerWidget>());
-    dropdownContent->setStyleClass("dropdown-content");
-    auto button1 = dropdownContent->addWidget(std::make_unique<WPushButton>());
-    button1->setStyleClass("dropdown-element");
-    button1->setText("Upload");
-    auto button2 = dropdownContent->addWidget(std::make_unique<WPushButton>());
-    button2->setText("Download");
-    button2->setStyleClass("dropdown-element");
-    button2->clicked().connect([&]()
-    {
-        dropdownContent->hide();
-    });
-
+    auto layout = setLayout(createLayout());
+    layout->addWidget(createFileMenu());
+    layout->addWidget(createEditMenu());
+    layout->addWidget(createColorPicker());
 
     // spacing
-    hBox->addWidget(std::make_unique<WContainerWidget>(), 1);
+    layout->addWidget(std::make_unique<WContainerWidget>(), 1);
 
-    colorizeButtonSetup();
-    hideButtonSetup();
+    layout->addWidget(createColorizeButton());
+    layout->addWidget(createHideButton());
 }
 
 Toolbar::~Toolbar()
 {
-    //std::filesystem::remove_all(sessionId);
+    std::filesystem::remove_all(sessionId);
 }
