@@ -40,3 +40,17 @@ for(i = 0; i < dropDowns.length; i++) {
         hoverSound.play();
     })
 }
+
+// Adding page title and logo
+
+var toolbar = document.getElementsByClassName("toolbar")[0];
+
+var pageTitle = document.createElement("div");
+pageTitle.className = "page-title";
+pageTitle.innerHTML = "ImageColorizer"
+
+var logo = document.createElement("img");
+logo.src = "../favicon.ico";
+
+toolbar.insertBefore(logo, toolbar.firstChild);
+toolbar.insertBefore(pageTitle, logo);
