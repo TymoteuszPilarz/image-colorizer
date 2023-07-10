@@ -8,9 +8,19 @@
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
+:root {
+    --bg1: #615756;
+    --bg2: #787878;
+    --bg3: #514746;
+    --tx1: #ffffea;
+    --tx2: #d8d8d8;
+    --hl1: #248232;
+    --hl2: #2ca58d;
+}
+
 body
 {
-    background-color: rgb(40, 43, 48);
+    background-color: var(--bg1);
     height: 100vh;
     margin: 0;
     overflow: hidden;
@@ -25,7 +35,7 @@ a
 
 span
 {
-    color: rgb(142, 143, 145);
+    color: var(--tx1);
     font-size: 17px;
     text-align: left;
 }
@@ -37,14 +47,14 @@ h4
 
 .background
 {
-    background-color: rgb(40, 43, 48);
+    background-color: var(--bg1);
     height: 100vh;
     margin: 0;
 }
 
 .toolbar
 {
-    background-color:rgb(40, 43, 48);
+    background-color: var(--bg1);
     margin: 0;
     padding: 0;
     height : 54px;
@@ -65,8 +75,8 @@ h4
 
 .dropdown-button
 {
-    background-color: rgb(40, 43, 48);
-    color: rgb(142, 143, 145);
+    background-color: var(--bg2);
+    color: var(--tx1);
     height: 100%;
     padding: 0 15px;
     border: none;
@@ -77,15 +87,15 @@ h4
 
 .dropdown:hover .dropdown-button
 {
-    background-color: rgb(27, 30, 32);
-    color: rgb(217, 217, 217);
+    background-color: var(--bg1);
+    color: var(--tx1);
 }
 
 .dropdown-content
 {
     display: none;
     position: absolute;
-    background-color: rgb(59, 63, 67);
+    background-color: var(--bg2);
     margin: 0;
     padding: 0;
     border-bottom: 1px solid black;
@@ -99,8 +109,8 @@ h4
 
 .dropdown-element
 {
-    background-color: rgb(59, 63, 67);
-    color: rgb(142, 143, 145);
+    background-color: var(--bg1);
+    color: var(--tx1);
     border: none;
     width: 125px;
     padding-top: 10px;
@@ -113,20 +123,20 @@ h4
 
 .dropdown-element:enabled:hover
 {
-    background-color: rgb(40, 43, 48);
-    color: rgb(217, 217, 217);
+    background-color: var(--bg2);
+    color: (var(--hl2))
 }
 
 .dropdown-element:disabled
 {
-    background-color: rgba(40, 43, 48, 0.29);
-    color: rgba(217, 217, 217, 0.32);
+    background-color: var(--bg3);
+    color: var(--tx2)
 }
 
 .options-button
 {
-    background-color: rgb(40, 43, 48);
-    color: rgb(142, 143, 145);
+    background-color: var(--hl2);
+    color: var(--tx2);
     height: 100%;
     padding: 0 15px;
     border: none;
@@ -137,14 +147,14 @@ h4
 
 .options-button:hover
 {
-    background-color: rgb(27, 30, 32);
-    color: rgb(217, 217, 217);
+    background-color: var(--hl1);
+    color: var(--tx1);
 }
 
 .dialog
 {
-    background-color: rgb(59, 63, 67);
-    color: rgb(142, 143, 145);
+    background-color: var(--bg2);
+    color: var(--tx2);
     border: 1px solid black;
     font-size: 30px;
     text-align: center;
@@ -158,8 +168,8 @@ h4
 
 .dialog-button
 {
-    background-color: rgb(40, 43, 48);
-    color: rgb(142, 143, 145);
+    background-color: var(--bg1);
+    color: var(--hl1);
     border: none;
     width: 110px;
     padding-top: 10px;
@@ -172,30 +182,30 @@ h4
 
 .dialog-button:enabled:hover
 {
-    background-color: rgb(27, 30, 32);
-    color: rgb(217, 217, 217);
+    background-color: var(--bg2);
+    color: var(--hl2);
 }
 
 .dialog-button:disabled
 {
-    background-color: rgba(40, 43, 48, 0.29);
-    color: rgba(217, 217, 217, 0.32);
+    background-color: var(--bg3);
+    color: var(--bg2);
 }
 
 .dialog-input
 {
     width: 50px;
-    background-color: rgb(59, 63, 67);
+    background-color: var(--bg1);
     border-style: none;
     border-width: 1px;
-    color: rgb(142, 143, 145);
+    color: var(--tx2);
     font-size: 17px;
 }
 
 .colorize-button
 {
-    background-color: rgb(16, 61, 134);
-    color: rgb(160, 160, 160);
+    background-color: var(--hl1);
+    color: var(--tx1);
     margin: 5px;
     padding: 0 15px;
     border: none;
@@ -207,8 +217,8 @@ h4
 
 .colorize-button:enabled:hover
 {
-    background-color: rgb(9, 37, 87);
-    color: rgb(217, 217, 217);
+    background-color: var(--hl2);
+    color: white;
 }
 
 .colorize-button:disabled
@@ -234,7 +244,7 @@ h4
 
 .content
 {
-    background-color: rgb(40, 43, 48);
+    background-color: var(--bg2);
     margin: 0;
 }
 
@@ -267,7 +277,7 @@ h4
 
 .loader-background
 {
-    background: rgba(134, 134, 134, 0.87);
+    background: var(--bg2);
     height: 100%; width: 100%;
     top: 0; left: 0;
     z-index: 10000;
