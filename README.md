@@ -7,7 +7,7 @@ Frontend and backend is written in pure C++20 with the help of Wt, OpenCV, Eigen
 Original algorithm is published [here](https://www.cs.huji.ac.il/w~yweiss/Colorization).\
 Implementation used by this project is based on [this repository](https://github.com/lightalchemist/colorize-image).
 
-User may colorize uploaded grayscale image by drawing colorful scribbles (as shown below). Algorithm then fills the regions of areas of the original image with similar intensity (brigthness) using the color of user's scribbles. We recommend using this application for rather small images, due to long processing times of larger ones. 
+User may colorize uploaded grayscale image by drawing colorful scribbles (as shown below). Algorithm then fills regions of the original image with similar intensity (brigthness) using the color of user's scribbles. We recommend using this application for rather small images, due to long processing times of larger ones. 
 
 # Demonstration
 |<img width="1440" alt="image1" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/ed6e9602-e887-4470-9050-9760580f3ea8">|
