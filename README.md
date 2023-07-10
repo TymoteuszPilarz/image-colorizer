@@ -7,6 +7,14 @@ Frontend and backend is written in pure C++20 with the help of Wt, OpenCV, Eigen
 Original algorithm is published [here](https://www.cs.huji.ac.il/w~yweiss/Colorization).\
 Implementation used by this project is based on [this repository](https://github.com/lightalchemist/colorize-image).
 
+User may colorize uploaded grayscale image by drawing colorful scribbles (as shown below). Algrith then fills regions of the areas of the original with simillar intensity (brigthness) with the collor of users scribbles. We recommend using this application for ratyher small images, due to long processing times of larger ones. 
+
+# Demonstration
+<img width="1440" alt="image1" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/ed6e9602-e887-4470-9050-9760580f3ea8">
+<img width="1440" alt="image2" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/f58f3340-30fd-4c29-87c0-3d7c862e10b4">
+<img width="1440" alt="image3" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/29d9da7a-12c4-4a86-b3c0-7bd37729cd28">
+
+
 # Building and running
 
 Appropriate CMake files are already provided. To build the project, Wt, OpenCV and Eigen3 are requred to be installed first. After successfull compilation, the following command can be used to run the program:
@@ -20,8 +28,3 @@ Image processing can take up to several dozen minutes depending on the image siz
 ```<timeout>seconds</timeout>``` - this property can be increased to prevent session from terminating while the image is still being processesed.
 
 ```<max-request-size>size</max-request-size>``` - max request size, wchich can be altered in order to upload larger images (e.g. 4k resolution)
-
-# Demonstration
-<img width="1440" alt="image1" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/ed6e9602-e887-4470-9050-9760580f3ea8">
-<img width="1440" alt="image2" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/f58f3340-30fd-4c29-87c0-3d7c862e10b4">
-<img width="1440" alt="image3" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/29d9da7a-12c4-4a86-b3c0-7bd37729cd28">
