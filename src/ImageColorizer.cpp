@@ -6,6 +6,10 @@
 #include <Wt/WLink.h>
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WOverlayLoadingIndicator.h>
+#include <Wt/WJavaScript.h>
+
+#include <fstream>
+#include <streambuf>
 
 #include "Toolbar.h"
 #include "Content.h"
@@ -36,4 +40,12 @@ ImageColorizer::ImageColorizer(const Wt::WEnvironment& env) : Wt::WApplication(e
     layout->addWidget(std::make_unique<Toolbar>(contentPtr.get()));
 
     layout->addWidget(std::move(contentPtr));
+
+    // Linking JS to be executed
+
+    std::ifstream jsfile("../js/script.js");
+    std::string javascript((std::istreambuf_iterator<char>(jsfile)), std::istreambuf_iterator<char>());
+    jsfile.close();
+
+    root()->doJavaScript(javascript);
 }
