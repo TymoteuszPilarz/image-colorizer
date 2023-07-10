@@ -10,9 +10,13 @@ Implementation used by this project is based on [this repository](https://github
 User may colorize uploaded grayscale image by drawing colorful scribbles (as shown below). Algrith then fills regions of the areas of the original with simillar intensity (brigthness) with the collor of users scribbles. We recommend using this application for ratyher small images, due to long processing times of larger ones. 
 
 # Demonstration
-<img width="1440" alt="image1" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/ed6e9602-e887-4470-9050-9760580f3ea8">
-<img width="1440" alt="image2" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/f58f3340-30fd-4c29-87c0-3d7c862e10b4">
-<img width="1440" alt="image3" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/29d9da7a-12c4-4a86-b3c0-7bd37729cd28">
+|<img width="1440" alt="image1" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/ed6e9602-e887-4470-9050-9760580f3ea8">|
+|:--:|
+| <b>Fig. 1 Users Scribbles - Editor </b>|
+|<img width="1440" alt="image2" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/f58f3340-30fd-4c29-87c0-3d7c862e10b4">|
+| <b>Fig. 2 - Users Scribbles - Color picker </b>|
+|<img width="1440" alt="image3" src="https://github.com/TymoteuszPilarz/ImageColorizer/assets/122737837/29d9da7a-12c4-4a86-b3c0-7bd37729cd28">|
+| <b>Fig. 3 - Final result</b>|
 
 
 # Building and running
