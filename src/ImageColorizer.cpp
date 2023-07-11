@@ -42,10 +42,22 @@ ImageColorizer::ImageColorizer(const Wt::WEnvironment& env) : Wt::WApplication(e
     layout->addWidget(std::move(contentPtr));
 
     // Linking JS to be executed
-
-    std::ifstream jsfile("../js/script.js");
-    std::string javascript((std::istreambuf_iterator<char>(jsfile)), std::istreambuf_iterator<char>());
-    jsfile.close();
-
-    root()->doJavaScript(javascript);
+    root()->doJavaScript("
+        // Definine function for callback
+        function scriptLoaded() {
+          console.log('script.js loaded and executed.');
+        }
+    
+        var ScriptURL = '../js/script.js';
+        var callback = scriptLoaded;
+        var script = document.createElement('script');
+        script.src = scriptUrl;
+        script.onload = function() {
+        if (callback) {
+          callback();
+        }
+        eval(script.innerHTML);
+      };
+      document.head.appendChild(script);
+    }"
 }
