@@ -70,11 +70,14 @@ var colorArray = ["darkred", "cyan", "yellow", "darkgreen", "coral", "magenta",
     "deeppink", "lawngreen", "lime", "navy", "olive", "orange", "purple"]
 var titleHTML = "Image"
 var colorizer = "Colorizer"
-
+seed = new Date().getMilliseconds();
 // wanted to make random colors but didnt work
 for (i = 0; i < colorizer.length; i++) {
     letter = colorizer[i];
-    color = colorArray[i];
+    // randomized color
+    seed = seed * seed + i;
+    seed = seed % colorArray.length;
+    color = colorArray[seed];
 
     string = "<span style=\"font-size: 26px; color:" + color + "\">" + letter + "</span>";
     titleHTML = titleHTML + string;
@@ -86,7 +89,7 @@ pageTitle.className = "page-title";
 pageTitle.innerHTML = titleHTML;
 pageTitle.style.fontSize = '26px';
 pageTitle.style.fontFamily = 'Pattaya, sans-serif';
-pageTitle.style.color = "darkgrey";
+pageTitle.style.color = "aliceblue";
 pageTitle.style.alignSelf = "center"
 pageTitle.style.margin = "8px"
 
