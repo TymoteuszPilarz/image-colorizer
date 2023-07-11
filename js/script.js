@@ -67,16 +67,15 @@ var toolbar = document.getElementsByClassName("toolbar")[0];
 
 
 var colorArray = ["darkred", "cyan", "yellow", "darkgreen", "coral", "magenta",
-    "deeppink", "lawngreen", "lime", "navy", "olive", "orange", "purple"]
+    "deeppink", "lawngreen", "lime", "navy", "olive", "orange", "purple", "salmon", "red", "blue"];
 var titleHTML = "Image"
 var colorizer = "Colorizer"
 seed = new Date().getMilliseconds();
 // wanted to make random colors but didnt work
 for (i = 0; i < colorizer.length; i++) {
     letter = colorizer[i];
-    // randomized color
-    seed = seed * seed + i;
-    seed = seed % colorArray.length;
+    // randomized color (Math.random didn't work had to generate psuedorandom squence with date)
+    seed = (seed * 2 + i) % colorArray.length;
     color = colorArray[seed];
 
     string = "<span style=\"font-size: 26px; color:" + color + "\">" + letter + "</span>";
