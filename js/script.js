@@ -1,10 +1,10 @@
 // had to do many unconventional things
 // executing JS in WT is somewhat fragile
 
-// linking fonts
-
+// wrapper function to execute the script onload
+function execute() {
 var head = document.head || document.getElementsByTagName('head')[0];
-
+// linking fonts
 var link1 = document.createElement('link');
 link1.rel = 'preconnect';
 link1.href = 'https://fonts.googleapis.com';
@@ -105,3 +105,6 @@ logo.addEventListener("mouseleave", () => {
 
 toolbar.insertBefore(logo, toolbar.firstChild);
 toolbar.insertBefore(pageTitle, logo);
+}
+
+document.onload = execute();
