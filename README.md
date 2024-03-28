@@ -1,4 +1,4 @@
-# ImageColorizer
+# Image Colorizer
 
 Web application designed to colorize grayscale images using algorithm described in A. Levin D. Lischinski and Y. Weiss Colorization using Optimization. ACM Transactions on Graphics, Aug 2004 for coloring grayscale images.
 
